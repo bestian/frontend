@@ -1,0 +1,22 @@
+doctype html
+html(lang="zh-tw")
+
+head
+    title=Frontend
+    meta(charset='utf-8')
+
+    link(href="/stylesheets/screen.css", media="screen, projection", rel="stylesheet", type="text/css" )
+
+    link(href="/stylesheets/print.css", media="print", rel="stylesheet", type="text/css" )
+
+//[if !IE]><!
+      link(href="/stylesheets/ie.css", media="screen, projection, rel="stylesheet", type="text/css" )
+//<![endif]
+
+
+body
+ nav(id = "chain")
+  ul
+   li(ng-repeat="i in [0,1,2,3,4,5,6]") {{i}} 
+ div(id = "view")
+ div(id = "keyBordCtrl")
