@@ -80,13 +80,21 @@ nav {
 
 	$up: 15px;
 
-	#up {
+	#up,#down {
 		position:absolute;
-		top: -$up;
 		left: $backup / 2 - $up;
-		border-bottom: $up solid cyan;
 		border-right: $up*2 solid transparent;
 		border-left: $up*2 solid transparent;
 		width: 0px;
+	}
+
+	#up {
+		top: -$up;
+		border-bottom: $up solid cyan;
+	}
+
+	#down {
+		top: $backup  + $up *2;
+		border-top: $up solid cyan;
 	}
 }

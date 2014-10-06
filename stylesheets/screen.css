@@ -145,12 +145,20 @@ nav ul li:hover {
   height: 100px;
 }
 /* line 83, ../sass/screen.scss */
-#keyBordCtrl #up {
+#keyBordCtrl #up, #keyBordCtrl #down {
   position: absolute;
-  top: -15px;
   left: 35px;
-  border-bottom: 15px solid cyan;
   border-right: 30px solid transparent;
   border-left: 30px solid transparent;
   width: 0px;
+}
+/* line 91, ../sass/screen.scss */
+#keyBordCtrl #up {
+  top: -15px;
+  border-bottom: 15px solid cyan;
+}
+/* line 96, ../sass/screen.scss */
+#keyBordCtrl #down {
+  top: 130px;
+  border-top: 15px solid cyan;
 }
