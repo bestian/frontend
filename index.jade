@@ -1,22 +1,40 @@
 doctype html
-html(lang="zh-tw")
+html(lang="zh-tw" ng-app="chainApp")
 
 head
-    title=Frontend
-    meta(charset='utf-8')
-
-    link(href="/stylesheets/screen.css", media="screen, projection", rel="stylesheet", type="text/css" )
-
-    link(href="/stylesheets/print.css", media="print", rel="stylesheet", type="text/css" )
+	title Frontend
+	meta(charset='utf-8')
+	link(href="stylesheets/screen.css", media="screen, projection", rel="stylesheet", type="text/css" )
+	link(href="stylesheets/print.css", media="print", rel="stylesheet", type="text/css" )
 
 //[if !IE]><!
-      link(href="/stylesheets/ie.css", media="screen, projection, rel="stylesheet", type="text/css" )
+	link(href="stylesheets/ie.css", media="screen, projection, rel="stylesheet", type="text/css" )
 //<![endif]
 
 
-body
- nav(id = "chain")
-  ul
-   li(ng-repeat="i in [0,1,2,3,4,5,6]") {{i}} 
- div(id = "view")
- div(id = "keyBordCtrl")
+body(ng-controller = "chainCtrl")
+	nav(id = "chain")
+		ul bt-frontend
+			li(ng-repeat="i in [0,1,2,3,4,5,6]")
+				a(ng-href = "#{{i}}_{{myJ}}",
+					ng-click = "$parent.myI = i") {{i}} 
+	div(id = "side")
+		ul bt-frontend
+			li(ng-repeat="j in myFolder")
+				a(ng-href = "#{{myI}}_{{j}}",
+					ng-click = "$parent.myJ = J") {{j}} 
+	div(id = "main")
+		iframe(id = "myFrame",
+				src = "https://docs.google.com/presentation/d/1fFgk1-gO4mMT1sZV4bAIxW789YitfsOsPnz25ONK3x8/edit#slide=id.p",
+				width="100%", height = "642px")
+	div(id = "keyBordCtrl")
+		div(id = "up" ng-class = "{available: false}")
+		div(id = "down" ng-class = "{available: false}")
+		div(id = "left" ng-class = "{available: ture}")
+		div(id = "right" ng-class = "{available: ture}")
+		div(id = "backup" class = "backup") backup
+
+
+
+	script(src = "bower_components/angular/angular.min.js")
+	script(src = "index.js")

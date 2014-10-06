@@ -4,3 +4,89 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+@import "compass/CSS3";
+
+
+$side : 15%;
+$nav : 50px;
+
+
+nav {
+	height: $nav;
+	padding: 15px;
+	font-size: 22px;
+
+	ul {
+
+		list-style-type: none;
+		li {
+			display: inline;
+			padding: 5px;
+			a {
+				padding: 15px;
+				text-decoration: none;
+			}
+			&:hover {
+				border-bottom: 5px solid cyan;
+			}
+		}
+	}
+}
+
+#side {
+	width: $side;
+	float:left;
+
+	ul {
+		margin-left : 15px;
+		li {
+			margin-top :15px;
+			a {
+				padding: 15px;
+				text-decoration: none;
+			}
+			&:hover {
+				margin-left : -5px;
+				border-left: 5px solid cyan;
+			}
+		}
+	}
+}
+
+#main {
+	width: 95% - $side;
+	float:right;
+}
+
+#keyBordCtrl {
+	position:fixed;
+	bottom:0px;
+	right:0px;
+	padding: 15px;
+	z-index:1;
+	width: 200px;
+	height: 200px;
+    $backup : 100px;
+	#backup {
+		vertical-align:middle;
+		text-align:center;
+		line-height:$backup;
+		@include border-radius(50%);
+		background-color:cyan;
+		width: $backup;
+		height: $backup;
+
+	}
+
+	$up: 15px;
+
+	#up {
+		position:absolute;
+		top: -$up;
+		left: $backup / 2 - $up;
+		border-bottom: $up solid cyan;
+		border-right: $up*2 solid transparent;
+		border-left: $up*2 solid transparent;
+		width: 0px;
+	}
+}

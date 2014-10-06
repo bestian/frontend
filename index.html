@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html lang="zh-tw"></html>
+<html lang="zh-tw" ng-app="chainApp"></html>
 <head>
-  <title></title>
+  <title>Frontend</title>
   <meta charset="utf-8">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+  <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
 </head>
-<!--[if !IE]><!link(href="/stylesheets/ie.css", media="screen, projection, rel="stylesheet", type="text/css" )
+<!--[if !IE]><!link(href="stylesheets/ie.css", media="screen, projection, rel="stylesheet", type="text/css" )
 -->
 <!--<![endif]-->
 
-<body>
+<body ng-controller="chainCtrl">
   <nav id="chain">
-    <ul>
-      <li ng-repeat="i in [0,1,2,3,4,5,6]">{{i}} </li>
+    <ul>bt-frontend
+      <li ng-repeat="i in [0,1,2,3,4,5,6]"><a ng-href="#{{i}}_{{myJ}}" ng-click="$parent.myI = i">{{i}} </a></li>
     </ul>
   </nav>
-  <div id="view"></div>
-  <div id="keyBordCtrl"></div>
+  <div id="side">
+    <ul>bt-frontend
+      <li ng-repeat="j in myFolder"><a ng-href="#{{myI}}_{{j}}" ng-click="$parent.myJ = J">{{j}} </a></li>
+    </ul>
+  </div>
+  <div id="main">
+    <iframe id="myFrame" src="https://docs.google.com/presentation/d/1fFgk1-gO4mMT1sZV4bAIxW789YitfsOsPnz25ONK3x8/edit#slide=id.p" width="100%" height="642px"></iframe>
+  </div>
+  <div id="keyBordCtrl">
+    <div id="up" ng-class="{available: false}"></div>
+    <div id="down" ng-class="{available: false}"></div>
+    <div id="left" ng-class="{available: ture}"></div>
+    <div id="right" ng-class="{available: ture}"></div>
+    <div id="backup" class="backup">backup</div>
+  </div>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="index.js"></script>
 </body>

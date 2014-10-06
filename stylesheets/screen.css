@@ -66,3 +66,91 @@ a img {
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
+
+/* line 14, ../sass/screen.scss */
+nav {
+  height: 50px;
+  padding: 15px;
+  font-size: 22px;
+}
+/* line 19, ../sass/screen.scss */
+nav ul {
+  list-style-type: none;
+}
+/* line 22, ../sass/screen.scss */
+nav ul li {
+  display: inline;
+  padding: 5px;
+}
+/* line 25, ../sass/screen.scss */
+nav ul li a {
+  padding: 15px;
+  text-decoration: none;
+}
+/* line 29, ../sass/screen.scss */
+nav ul li:hover {
+  border-bottom: 5px solid cyan;
+}
+
+/* line 36, ../sass/screen.scss */
+#side {
+  width: 15%;
+  float: left;
+}
+/* line 40, ../sass/screen.scss */
+#side ul {
+  margin-left: 15px;
+}
+/* line 42, ../sass/screen.scss */
+#side ul li {
+  margin-top: 15px;
+}
+/* line 44, ../sass/screen.scss */
+#side ul li a {
+  padding: 15px;
+  text-decoration: none;
+}
+/* line 48, ../sass/screen.scss */
+#side ul li:hover {
+  margin-left: -5px;
+  border-left: 5px solid cyan;
+}
+
+/* line 56, ../sass/screen.scss */
+#main {
+  width: 80%;
+  float: right;
+}
+
+/* line 61, ../sass/screen.scss */
+#keyBordCtrl {
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  padding: 15px;
+  z-index: 1;
+  width: 200px;
+  height: 200px;
+}
+/* line 70, ../sass/screen.scss */
+#keyBordCtrl #backup {
+  vertical-align: middle;
+  text-align: center;
+  line-height: 100px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-color: cyan;
+  width: 100px;
+  height: 100px;
+}
+/* line 83, ../sass/screen.scss */
+#keyBordCtrl #up {
+  position: absolute;
+  top: -15px;
+  left: 35px;
+  border-bottom: 15px solid cyan;
+  border-right: 30px solid transparent;
+  border-left: 30px solid transparent;
+  width: 0px;
+}
