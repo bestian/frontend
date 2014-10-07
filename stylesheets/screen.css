@@ -82,47 +82,70 @@ nav ul li {
   display: inline;
   padding: 5px;
 }
-/* line 25, ../sass/screen.scss */
+/* line 23, ../sass/screen.scss */
+nav ul li:first-child {
+  margin-left: 75px;
+}
+/* line 28, ../sass/screen.scss */
 nav ul li a {
-  padding: 15px;
+  display: inline-block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 3px solid gray;
+  padding: 5px;
   text-decoration: none;
 }
-/* line 29, ../sass/screen.scss */
-nav ul li:hover {
-  border-bottom: 5px solid cyan;
+/* line 34, ../sass/screen.scss */
+nav ul li a:hover, nav ul li a:active, nav ul li a.active {
+  background-color: #404040;
 }
 
-/* line 36, ../sass/screen.scss */
+/* line 42, ../sass/screen.scss */
 #side {
   width: 15%;
   float: left;
 }
-/* line 40, ../sass/screen.scss */
+/* line 45, ../sass/screen.scss */
 #side ul {
-  margin-left: 15px;
+  margin-left: 10%;
 }
-/* line 42, ../sass/screen.scss */
+/* line 47, ../sass/screen.scss */
 #side ul li {
   margin-top: 15px;
+  width: 100%;
 }
-/* line 44, ../sass/screen.scss */
+/* line 50, ../sass/screen.scss */
 #side ul li a {
-  padding: 15px;
+  display: inline-block;
+  padding: 8px;
+  width: 100%;
+  font-size: 22px;
   text-decoration: none;
 }
-/* line 48, ../sass/screen.scss */
-#side ul li:hover {
+/* line 56, ../sass/screen.scss */
+#side ul li a:hover, #side ul li a:active, #side ul li a.active {
   margin-left: -5px;
-  border-left: 5px solid cyan;
+  border-left: 5px solid #007f7f;
 }
 
-/* line 56, ../sass/screen.scss */
+/* line 65, ../sass/screen.scss */
 #main {
   width: 80%;
   float: right;
 }
+/* line 68, ../sass/screen.scss */
+#main iframe {
+  position: relative;
+  left: -30px;
+  background-color: #f9ecec;
+  border: 3px solid #f9ecec;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+}
 
-/* line 61, ../sass/screen.scss */
+/* line 78, ../sass/screen.scss */
 #keyBordCtrl {
   position: fixed;
   bottom: 0px;
@@ -132,7 +155,7 @@ nav ul li:hover {
   width: 200px;
   height: 200px;
 }
-/* line 70, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 #keyBordCtrl #backup {
   vertical-align: middle;
   text-align: center;
@@ -144,7 +167,20 @@ nav ul li:hover {
   width: 100px;
   height: 100px;
 }
-/* line 83, ../sass/screen.scss */
+/* line 97, ../sass/screen.scss */
+#keyBordCtrl #backup a {
+  display: inline-block;
+  position: relative;
+  top: 22.5px;
+  border-top: 45px solid #7fffff;
+  border-right: 30px solid transparent;
+  border-left: 30px solid transparent;
+}
+/* line 104, ../sass/screen.scss */
+#keyBordCtrl #backup a:hover {
+  border-top: 45px solid #007f7f;
+}
+/* line 112, ../sass/screen.scss */
 #keyBordCtrl #up, #keyBordCtrl #down {
   position: absolute;
   left: 35px;
@@ -152,13 +188,47 @@ nav ul li:hover {
   border-left: 30px solid transparent;
   width: 0px;
 }
-/* line 91, ../sass/screen.scss */
+/* line 120, ../sass/screen.scss */
 #keyBordCtrl #up {
   top: -15px;
   border-bottom: 15px solid cyan;
 }
-/* line 96, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
+#keyBordCtrl #up:hover {
+  border-bottom: 15px solid #007f7f;
+}
+/* line 128, ../sass/screen.scss */
 #keyBordCtrl #down {
   top: 130px;
   border-top: 15px solid cyan;
+}
+/* line 131, ../sass/screen.scss */
+#keyBordCtrl #down:hover {
+  border-top: 15px solid #007f7f;
+}
+/* line 137, ../sass/screen.scss */
+#keyBordCtrl #left, #keyBordCtrl #right {
+  position: absolute;
+  top: 35px;
+  width: 0px;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+}
+/* line 145, ../sass/screen.scss */
+#keyBordCtrl #left {
+  left: -15px;
+  border-right: 15px solid cyan;
+}
+/* line 148, ../sass/screen.scss */
+#keyBordCtrl #left:hover {
+  border-right: 15px solid #007f7f;
+}
+/* line 153, ../sass/screen.scss */
+#keyBordCtrl #right {
+  left: 130px;
+  border-left: 15px solid cyan;
+}
+/* line 156, ../sass/screen.scss */
+#keyBordCtrl #right:hover {
+  border-left: 15px solid #007f7f;
 }

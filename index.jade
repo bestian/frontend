@@ -12,29 +12,36 @@ head
 //<![endif]
 
 
-body(ng-controller = "chainCtrl")
+body(ng-controller = "chainCtrl", ng-keydown="keyPress($event)")
 	nav(id = "chain")
 		ul bt-frontend
 			li(ng-repeat="i in [0,1,2,3,4,5,6]")
 				a(ng-href = "#{{i}}_{{myJ}}",
-					ng-click = "$parent.myI = i") {{i}} 
+					ng-class = "{active: myI == i}",
+					ng-click = "$parent.myI = i",) 
 	div(id = "side")
-		ul bt-frontend
+		ul
 			li(ng-repeat="j in myFolder")
-				a(ng-href = "#{{myI}}_{{j}}",
-					ng-click = "$parent.myJ = J") {{j}} 
+				a(ng-href = "#{{myI}}_{{j}}",				
+					ng-class = "{active: myJ == j}",
+					ng-click = "$parent.myJ = j") {{dummy[j].name || j}} 
 	div(id = "main")
 		iframe(id = "myFrame",
-				src = "https://docs.google.com/presentation/d/1fFgk1-gO4mMT1sZV4bAIxW789YitfsOsPnz25ONK3x8/edit#slide=id.p",
+				ng-src = "{{trust(dummy[myJ].url)}}",
 				width="100%", height = "642px")
 	div(id = "keyBordCtrl")
-		div(id = "up" ng-class = "{available: false}")
-		div(id = "down" ng-class = "{available: false}")
-		div(id = "left" ng-class = "{available: ture}")
-		div(id = "right" ng-class = "{available: ture}")
-		div(id = "backup" class = "backup") backup
+		div(id = "up",ng-class = "{available: false}",
+					ng-click="up(-1)")
+		div(id = "down",ng-class = "{available: false}",
+					ng-click="up(1)")
+		div(id = "left",ng-class = "{available: ture}",
+					ng-click="left(-1)")
+		div(id = "right",ng-class = "{available: ture}",
+					ng-click="left(1)")
+		div(id = "backup",class = "backup")
+			a(ng-click="backup()")
 
 
 
 	script(src = "bower_components/angular/angular.min.js")
-	script(src = "index.js")
+	script(src = "javascripts/index.js")

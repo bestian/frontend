@@ -20,15 +20,21 @@ nav {
 
 		list-style-type: none;
 		li {
+			&:first-child {			
+				margin-left:75px;
+			}
 			display: inline;
 			padding: 5px;
 			a {
-				padding: 15px;
+				display: inline-block;
+				@include border-radius(50%);
+				border: 3px solid gray;
+				padding: 5px;
 				text-decoration: none;
-			}
-			&:hover {
-				border-bottom: 5px solid cyan;
-			}
+				&:hover, &:active, &.active {
+					background-color: mix(black,gray);
+				}
+			}	
 		}
 	}
 }
@@ -36,19 +42,22 @@ nav {
 #side {
 	width: $side;
 	float:left;
-
 	ul {
-		margin-left : 15px;
+		margin-left : 10%;
 		li {
 			margin-top :15px;
+			width: 100%;
 			a {
-				padding: 15px;
+				display:inline-block;
+				padding: 8px;
+				width: 100%;
+				font-size: 22px;
 				text-decoration: none;
-			}
-			&:hover {
-				margin-left : -5px;
-				border-left: 5px solid cyan;
-			}
+				&:hover, &:active,&.active {
+					margin-left : -5px;
+					border-left: 5px solid mix(black,cyan);
+				}
+			}			
 		}
 	}
 }
@@ -56,9 +65,19 @@ nav {
 #main {
 	width: 95% - $side;
 	float:right;
+	iframe {
+		position:relative;
+		left: -30px;
+		$f : hsla(0,50%,95%,1);
+		background-color : $f;
+		border :3px solid $f;
+		@include border-radius(15px);
+	}
 }
 
 #keyBordCtrl {
+	$up: 15px;
+
 	position:fixed;
 	bottom:0px;
 	right:0px;
@@ -75,10 +94,20 @@ nav {
 		background-color:cyan;
 		width: $backup;
 		height: $backup;
+		a {
+			display: inline-block;
+			position: relative;
+			top: $up*1.5;
+			border-top: $up*3 solid mix(white, cyan);
+			border-right: $up*2 solid transparent;
+			border-left: $up*2 solid transparent;
+			&:hover {			
+				border-top: $up*3 solid mix(black, cyan);
+			}				
+		}
+		
 
 	}
-
-	$up: 15px;
 
 	#up,#down {
 		position:absolute;
@@ -91,10 +120,43 @@ nav {
 	#up {
 		top: -$up;
 		border-bottom: $up solid cyan;
+		&:hover {			
+			border-bottom: $up solid mix(black, cyan);
+		}
 	}
 
 	#down {
 		top: $backup  + $up *2;
 		border-top: $up solid cyan;
+		&:hover {			
+			border-top: $up solid mix(black, cyan);
+		}
 	}
+
+
+	#left,#right {
+		position:absolute;
+		top: $backup / 2 - $up;
+		width: 0px;		
+		border-top: $up*2 solid transparent;
+		border-bottom: $up*2 solid transparent;
+	}
+
+	#left {
+		left: -$up;
+		border-right: $up solid cyan;
+		&:hover {			
+			border-right: $up solid mix(black, cyan);
+		}
+	}
+
+	#right {
+		left: $backup  + $up *2;
+		border-left: $up solid cyan;
+		&:hover {			
+			border-left: $up solid mix(black, cyan);
+		}
+	}
+
+
 }
