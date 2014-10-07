@@ -1,10 +1,11 @@
 
 
-chainCtrl = ($scope, $sce) !->
+chainCtrl = ($scope, $sce, $title) !->
 	$scope.myFolder = [to 10]
 	$scope.myI = 0
 	$scope.myJ = 0
 
+	$scope.title = $title
 
 	$scope.backup = !->
 
@@ -47,4 +48,5 @@ chainCtrl = ($scope, $sce) !->
 
 
 angular.module 'chainApp' []
+	.constant '$title' 'bt_frontend'
 	.controller 'chainCtrl' chainCtrl
