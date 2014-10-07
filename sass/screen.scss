@@ -10,6 +10,15 @@
 $side : 15%;
 $nav : 50px;
 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+
+a {	
+	cursor:pointer;
+}
+
 
 nav {
 	height: $nav;
@@ -17,7 +26,6 @@ nav {
 	font-size: 22px;
 
 	ul {
-
 		list-style-type: none;
 		li {
 			&:first-child {			
@@ -43,7 +51,7 @@ nav {
 	width: $side;
 	float:left;
 	ul {
-		margin-left : 10%;
+		margin-left : 10%;		
 		li {
 			margin-top :15px;
 			width: 100%;
@@ -57,6 +65,31 @@ nav {
 					margin-left : -5px;
 					border-left: 5px solid mix(black,cyan);
 				}
+				&.elem {
+					margin-left:15px;
+				}
+				img.folder {
+					height:15px;
+				}
+				.arrowHead{
+					$a: 6px;
+					display:inline-block;
+					width:0px;
+					position:relative;
+					top: -$a / 2;
+					left: $a * 2;
+					&.right{
+						border-left: $a solid black;
+						border-top: $a solid transparent;
+						border-bottom: $a solid transparent;						
+					}
+					&.down{
+						border-top: $a solid black;
+						border-left: $a solid transparent;
+						border-right: $a solid transparent;	
+					}
+				}
+
 			}			
 		}
 	}
@@ -66,12 +99,18 @@ nav {
 	width: 95% - $side;
 	float:right;
 	iframe {
-		position:relative;
-		left: -30px;
+		width: 95% - $side;
+		position:absolute;
+		right: 30px;
 		$f : hsla(0,50%,95%,1);
 		background-color : $f;
 		border :3px solid $f;
 		@include border-radius(15px);
+		@include transition(opacity 0.5s ease);
+		&.null {
+			@include transition(opacity 0.2s ease);
+			opacity: 0;
+		}
 	}
 }
 

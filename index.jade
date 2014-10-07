@@ -13,23 +13,38 @@ head
 
 
 body(ng-controller = "chainCtrl", ng-keydown="keyPress($event)")
-	nav(id = "chain")
-		ul {{title}}{{myI}}
+	nav(id = "chain" ng-cloak)
+		ul {{title}}{{myI}} _ {{myJ}}
 			li(ng-repeat="i in [0,1,2,3,4,5,6]")
 				a(ng-href = "#{{i}}_{{myJ}}",
 					ng-class = "{active: myI == i}",
 					ng-click = "$parent.myI = i",) 
-	div(id = "side")
+
+	div(id = "side", ng-cloak)
 		ul 
-			li(ng-repeat="j in myFolder")
-				a(ng-href = "#{{myI}}_{{j}}",				
-					ng-class = "{active: myJ == j}",
-					ng-click = "$parent.myJ = j") {{dummy[j].name || j}}
+			li(ng-repeat="j in dummy | toIndex",
+				ng-click = "$parent.myJ = j")
+
+				a(ng-if = 'dummy[j].isFolder'
+					ng-click = "$parent.dummy[j].isClosed = !dummy[j].isClosed;",
+					ng-class = "{active: myJ == j}")
+					img(class ="folder", ng-show = 'dummy[j].isClosed', src = "img/isClosed.png")
+					img(class ="folder", ng-show = '!dummy[j].isClosed', src = "img/isOpen.png")
+					{{dummy[j].name || j}}
+					b(class = "arrowHead", ng-class = "{right: dummy[j].isClosed, down: !dummy[j].isClosed}")
+				
+				a(ng-if = "!dummy[j].isFolder"
+					ng-show = " dummy[j].pIndex == 'self' || !dummy[dummy[j].pIndex].isClosed"
+					ng-href = "#{{myI}}_{{j}}",		
+					class = "elem",		
+					ng-class = "{active: myJ == j}") {{dummy[j].name || j}}
+
+
 	div(id = "main")
-		iframe(id = "myFrame",
-				ng-repeat = "d in dummy"
-				ng-show = "$index == myJ"
-				ng-if = "$index - myJ < 3 || myJ - $index < 3"
+		iframe(id = "myFrame", ng-cloak,
+				ng-repeat = "d in dummy",
+				ng-if = "$index - myJ < 2 || myJ - $index < 2",
+				ng-class = "{null: $index != myJ}",
 				ng-src = "{{trust(d.url)}}",
 				width="100%", height = "642px")
 	div(id = "keyBordCtrl")

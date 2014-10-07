@@ -1,2 +1,36 @@
-<!DOCTYPE html><html lang="zh-tw" ng-app="chainApp"></html><head><title>Frontend</title><meta charset="utf-8"><link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css"><link href="stylesheets/print.css" media="print" rel="stylesheet" type="text/css"></head><!--[if !IE]><!link(href="stylesheets/ie.css", media="screen, projection, rel="stylesheet", type="text/css" )--><!--<![endif]-->
-<body ng-controller="chainCtrl" ng-keydown="keyPress($event)"><nav id="chain"><ul>{{title}}{{myI}}<li ng-repeat="i in [0,1,2,3,4,5,6]"><a ng-href="#{{i}}_{{myJ}}" ng-class="{active: myI == i}" ng-click="$parent.myI = i"> </a></li></ul></nav><div id="side"><ul> <li ng-repeat="j in myFolder"><a ng-href="#{{myI}}_{{j}}" ng-class="{active: myJ == j}" ng-click="$parent.myJ = j">{{dummy[j].name || j}}</a></li></ul></div><div id="main"><iframe id="myFrame" ng-repeat="d in dummy" ng-show="$index == myJ" ng-if="$index - myJ &lt; 3 || myJ - $index &lt; 3" ng-src="{{trust(d.url)}}" width="100%" height="642px"></iframe></div><div id="keyBordCtrl"><div id="up" ng-class="{available: false}" ng-click="up(-1)"></div><div id="down" ng-class="{available: false}" ng-click="up(1)"></div><div id="left" ng-class="{available: ture}" ng-click="left(-1)"></div><div id="right" ng-class="{available: ture}" ng-click="left(1)"></div><div id="backup" class="backup"><a ng-click="backup()"></a></div></div><script src="bower_components/angular/angular.min.js"></script><script src="javascripts/index.js"></script></body>
+<!DOCTYPE html>
+<html lang="zh-tw" ng-app="chainApp"></html>
+<head>
+  <title>Frontend</title>
+  <meta charset="utf-8">
+  <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
+</head>
+<!--[if !IE]><!link(href="stylesheets/ie.css", media="screen, projection, rel="stylesheet", type="text/css" )
+-->
+<!--<![endif]-->
+
+<body ng-controller="chainCtrl" ng-keydown="keyPress($event)">
+  <nav id="chain" ng-cloak>
+    <ul>{{title}}{{myI}} _ {{myJ}}
+      <li ng-repeat="i in [0,1,2,3,4,5,6]"><a ng-href="#{{i}}_{{myJ}}" ng-class="{active: myI == i}" ng-click="$parent.myI = i"> </a></li>
+    </ul>
+  </nav>
+  <div id="side" ng-cloak>
+    <ul> 
+      <li ng-repeat="j in dummy | toIndex" ng-click="$parent.myJ = j"><a ng-if="dummy[j].isFolder" ng-click="$parent.dummy[j].isClosed = !dummy[j].isClosed;" ng-class="{active: myJ == j}"><img ng-show="dummy[j].isClosed" src="img/isClosed.png" class="folder"><img ng-show="!dummy[j].isClosed" src="img/isOpen.png" class="folder">{{dummy[j].name || j}}<b ng-class="{right: dummy[j].isClosed, down: !dummy[j].isClosed}" class="arrowHead"></b></a><a ng-if="!dummy[j].isFolder" ng-show=" dummy[j].pIndex == 'self' || !dummy[dummy[j].pIndex].isClosed" ng-href="#{{myI}}_{{j}}" ng-class="{active: myJ == j}" class="elem">{{dummy[j].name || j}}</a></li>
+    </ul>
+  </div>
+  <div id="main">
+    <iframe id="myFrame" ng-cloak ng-repeat="d in dummy" ng-if="$index - myJ &lt; 2 || myJ - $index &lt; 2" ng-class="{null: $index != myJ}" ng-src="{{trust(d.url)}}" width="100%" height="642px"></iframe>
+  </div>
+  <div id="keyBordCtrl">
+    <div id="up" ng-class="{available: false}" ng-click="up(-1)"></div>
+    <div id="down" ng-class="{available: false}" ng-click="up(1)"></div>
+    <div id="left" ng-class="{available: ture}" ng-click="left(-1)"></div>
+    <div id="right" ng-class="{available: ture}" ng-click="left(1)"></div>
+    <div id="backup" class="backup"><a ng-click="backup()"></a></div>
+  </div>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="javascripts/index.js"></script>
+</body>
