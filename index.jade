@@ -20,14 +20,16 @@ body(ng-controller = "chainCtrl", ng-keydown="keyPress($event)")
 					ng-class = "{active: myI == i}",
 					ng-click = "$parent.myI = i",) 
 	div(id = "side")
-		ul
+		ul 
 			li(ng-repeat="j in myFolder")
 				a(ng-href = "#{{myI}}_{{j}}",				
 					ng-class = "{active: myJ == j}",
-					ng-click = "$parent.myJ = j") {{dummy[j].name || j}} 
+					ng-click = "$parent.myJ = j") {{dummy[j].name || j}}
 	div(id = "main")
 		iframe(id = "myFrame",
-				ng-src = "{{trust(dummy[myJ].url)}}",
+				ng-repeat = "d in dummy"
+				ng-show = "$index == myJ"
+				ng-src = "{{trust(d.url)}}",
 				width="100%", height = "642px")
 	div(id = "keyBordCtrl")
 		div(id = "up",ng-class = "{available: false}",
