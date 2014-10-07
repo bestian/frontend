@@ -13,6 +13,7 @@ chainCtrl = ($scope, $sce) !->
 
 	$scope.keyPress = ($event) !->
 		console.log $event
+		$event.preventDefault()
 	#	alert $event.keyCode
 		code = $event.keyCode
 		if code == 40

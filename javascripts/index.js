@@ -12,6 +12,7 @@
     $scope.keyPress = function($event){
       var code;
       console.log($event);
+      $event.preventDefault();
       code = $event.keyCode;
       if (code === 40) {
         $scope.up(1);
