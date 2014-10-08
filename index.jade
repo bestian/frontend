@@ -2,7 +2,7 @@ doctype html
 html(lang="zh-tw" ng-app="chainApp")
 
 head
-	link(rel="shortcut icon",href="img/favicon.ico")
+	link(rel="shortcut icon",href="images/favicon.ico")
 	title Frontend
 	meta(charset='utf-8')
 	link(href="stylesheets/screen.css", media="screen, projection", rel="stylesheet", type="text/css" )
@@ -32,8 +32,8 @@ body(ng-controller = "chainCtrl", ng-keydown="keyPress($event)")
 				a(ng-if = 'goban.data[j].isFolder'
 					ng-click = "$parent.goban.data[j].isClosed = !goban.data[j].isClosed;",
 					ng-class = "{active: myJ == j}")
-					img(class ="folder", ng-show = 'goban.data[j].isClosed', src = "img/isClosed.png")
-					img(class ="folder", ng-show = '!goban.data[j].isClosed', src = "img/isOpen.png")
+					img(class ="folder", ng-show = 'goban.data[j].isClosed', src = "images/isClosed.png")
+					img(class ="folder", ng-show = '!goban.data[j].isClosed', src = "images/isOpen.png")
 					{{goban.data[j].name || j}}
 					b(class = "arrowHead", ng-class = "{right: goban.data[j].isClosed, down: !goban.data[j].isClosed}")
 				
