@@ -44,9 +44,11 @@
     };
     $scope.up = function(n){
       $scope.myJ += n;
+      $scope.updateHash();
     };
     $scope.left = function(n){
       $scope.myI += n;
+      $scope.updateHash();
     };
     $scope.goban = new Object;
     $scope.goban.data = $dummy;

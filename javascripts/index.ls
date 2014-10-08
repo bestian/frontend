@@ -37,10 +37,12 @@ chainCtrl = ($scope, $sce, $title, $path ,$dummy, $hash) !->
 
 	$scope.up = (n) !->
 		$scope.myJ += n
+		$scope.updateHash!
 
 
 	$scope.left = (n) !->
 		$scope.myI += n
+		$scope.updateHash!
 
 	$scope.goban = new Object;
 	$scope.goban.data = $dummy
