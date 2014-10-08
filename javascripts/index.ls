@@ -1,17 +1,17 @@
 
 
-chainCtrl = ($scope, $sce, $title, $path ,$dummy) !->
+chainCtrl = ($scope, $sce, $title, $path ,$dummy, $hash) !->
 
+	
+	$scope.myColumnIndex = [to 6]
 	$scope.myFolderIndex = [to 10]
-	$scope.myI = 0
-	$scope.myJ = 0
-
-
-	$scope.title = $title
+	$scope.myI = $hash.asArray![1] or 0
+	$scope.myJ = $hash.asArray![2]	or 0
+	$scope.title = $hash.asArray![0] or $title
 
 	$scope.backup = !->
 		for i in $scope.myFolderIndex
-			window.open $path+$title+i+'.csv'  "_blank" "width=0, height=0, titlebar=no, toolbar=no"
+			window.open $path+$title+i+'.csv'  \_blank "width=0, height=0, titlebar=no, toolbar=no"
 
 	$scope.trust = (url)->
 		$sce.trustAsResourceUrl(url)
@@ -30,7 +30,10 @@ chainCtrl = ($scope, $sce, $title, $path ,$dummy) !->
 			$scope.left 1
 		if code == 32
 			$scope.goban.data[$scope.myJ].isClosed = !$scope.goban.data[$scope.myJ].isClosed;
+		$scope.updateHash!
 
+	$scope.updateHash = !->
+		$hash.upDateFromArray [$scope.title,$scope.myI,$scope.myJ]
 
 	$scope.up = (n) !->
 		$scope.myJ += n
@@ -41,6 +44,20 @@ chainCtrl = ($scope, $sce, $title, $path ,$dummy) !->
 
 	$scope.goban = new Object;
 	$scope.goban.data = $dummy
+
+
+toIndex = ->
+	(list)->
+		[to list.length-1]
+
+myHash = ->
+	data: location.hash
+	asArray: ->
+		@.data.replace \# '' .split \&
+	upDateFromArray: (list) !->
+		location.hash = \# + list.join \&
+
+
 
 
 myDummy = 
@@ -79,15 +96,12 @@ myDummy =
 			url: 'https://docs.google.com/presentation/d/1frZZWrlCOapT_9edhjd5hC0X4K-2NziAvE5IsXm7A-Q/edit#slide=id.p10'
 
 
-toIndex = ->
-	(list)->
-		[to list.length-1]
-
 
 
 angular.module 'chainApp' []
 	.constant '$path' 'https://ethercalc.org/'
 	.constant '$title' 'bt_frontend'
 	.constant '$dummy' myDummy
+	.factory '$hash' myHash
 	.filter 'toIndex' toIndex
 	.controller 'chainCtrl' chainCtrl
