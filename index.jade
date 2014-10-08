@@ -14,7 +14,9 @@ head
 
 body(ng-controller = "chainCtrl", ng-keydown="keyPress($event)")
 	nav(id = "chain" ng-cloak)
-		ul {{title}}{{myI}} _ {{myJ}}
+		ul {{title}}
+			span(class = "number") {{myI}}
+				sub -{{myJ}}
 			li(ng-repeat="i in [0,1,2,3,4,5,6]")
 				a(ng-href = "#{{i}}_{{myJ}}",
 					ng-class = "{active: myI == i}",
@@ -22,27 +24,29 @@ body(ng-controller = "chainCtrl", ng-keydown="keyPress($event)")
 
 	div(id = "side", ng-cloak)
 		ul 
-			li(ng-repeat="j in dummy | toIndex",
+			li(ng-repeat="j in goban.data | toIndex",
 				ng-click = "$parent.myJ = j")
 
-				a(ng-if = 'dummy[j].isFolder'
-					ng-click = "$parent.dummy[j].isClosed = !dummy[j].isClosed;",
+				a(ng-if = 'goban.data[j].isFolder'
+					ng-click = "$parent.goban.data[j].isClosed = !goban.data[j].isClosed;",
 					ng-class = "{active: myJ == j}")
-					img(class ="folder", ng-show = 'dummy[j].isClosed', src = "img/isClosed.png")
-					img(class ="folder", ng-show = '!dummy[j].isClosed', src = "img/isOpen.png")
-					{{dummy[j].name || j}}
-					b(class = "arrowHead", ng-class = "{right: dummy[j].isClosed, down: !dummy[j].isClosed}")
+					img(class ="folder", ng-show = 'goban.data[j].isClosed', src = "img/isClosed.png")
+					img(class ="folder", ng-show = '!goban.data[j].isClosed', src = "img/isOpen.png")
+					{{goban.data[j].name || j}}
+					b(class = "arrowHead", ng-class = "{right: goban.data[j].isClosed, down: !goban.data[j].isClosed}")
 				
-				a(ng-if = "!dummy[j].isFolder"
-					ng-show = " dummy[j].pIndex == 'self' || !dummy[dummy[j].pIndex].isClosed"
+				a(ng-if = "!goban.data[j].isFolder"
+					ng-show = " goban.data[j].pIndex == 'self' || !goban.data[goban.data[j].pIndex].isClosed"
 					ng-href = "#{{myI}}_{{j}}",		
 					class = "elem",		
-					ng-class = "{active: myJ == j}") {{dummy[j].name || j}}
+					ng-class = "{active: myJ == j}")
+					img(ng-src = "http://www.google.com/s2/favicons?domain={{goban.data[j].url}}")
+					{{goban.data[j].name || j}}
 
 
 	div(id = "main")
 		iframe(id = "myFrame", ng-cloak,
-				ng-repeat = "d in dummy",
+				ng-repeat = "d in goban.data track by $index",
 				ng-if = "$index - myJ < 2 || myJ - $index < 2",
 				ng-class = "{null: $index != myJ}",
 				ng-src = "{{trust(d.url)}}",

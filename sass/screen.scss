@@ -27,6 +27,16 @@ nav {
 
 	ul {
 		list-style-type: none;
+		font-family: cursive, sen-seirf, arial;
+		.number {		
+			display:inline-block;
+			font-family: "times new roman", sen-seirf, arial;
+			margin-left:15px;
+			@include transform(skewX(-15deg));
+			sub {
+				font-size: 62%;
+			}
+		}
 		li {
 			&:first-child {			
 				margin-left:75px;
@@ -110,6 +120,7 @@ nav {
 		&.null {
 			@include transition(opacity 0.2s ease);
 			opacity: 0;
+			z-index: -5;
 		}
 	}
 }
