@@ -1,6 +1,7 @@
 
 
-chainCtrl = ($scope, $sce, $title, $path ,$dummy, $hash) !->
+chainCtrl = ($scope, $sce, $title, $path,
+				$dummy, $hash, $goban) !->
 
 	
 	$scope.myColumnIndex = [to 6]
@@ -49,9 +50,10 @@ chainCtrl = ($scope, $sce, $title, $path ,$dummy, $hash) !->
 			$scope.myI = 0
 		$scope.updateHash!
 
-	$scope.goban = new Object;
-	$scope.goban.data = $dummy
+	$scope.goban = $goban;
+	$scope.goban.data = $dummy;
 
+	$scope.goban.load 0;
 
 toIndex = ->
 	(list)->
@@ -63,8 +65,6 @@ myHash = ->
 		@.data.replace \# '' .split \&
 	upDateFromArray: (list) !->
 		location.hash = \# + list.join \&
-
-
 
 
 myDummy = 
@@ -103,12 +103,28 @@ myDummy =
 			url: 'https://docs.google.com/presentation/d/1frZZWrlCOapT_9edhjd5hC0X4K-2NziAvE5IsXm7A-Q/edit#slide=id.p10'
 
 
+myGoban = ($http, $path, $title)->
+	goban = new Object;
 
+	myLoad = (num)-> 
+		$http {method: "GET",url: $path + $title + num + '.csv',dataType: "text"}
+			.success (data) ->
+				console.log data
+				data	
+
+	goban.load = (num) !->	
+		myLoad num
+	#	this.data = myLoad num	
+
+	#todo : parseData
+	
+	goban
 
 angular.module 'chainApp' []
 	.constant '$path' 'https://ethercalc.org/'
 	.constant '$title' 'bt_frontend'
 	.constant '$dummy' myDummy
 	.factory '$hash' myHash
+	.factory '$goban' [\$http,\$path, \$title, myGoban]
 	.filter 'toIndex' toIndex
 	.controller 'chainCtrl' chainCtrl
