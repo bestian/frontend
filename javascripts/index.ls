@@ -30,18 +30,23 @@ chainCtrl = ($scope, $sce, $title, $path ,$dummy, $hash) !->
 			$scope.left 1
 		if code == 32
 			$scope.goban.data[$scope.myJ].isClosed = !$scope.goban.data[$scope.myJ].isClosed;
-		$scope.updateHash!
 
 	$scope.updateHash = !->
 		$hash.upDateFromArray [$scope.title,$scope.myI,$scope.myJ]
 
 	$scope.up = (n) !->
+		$scope.myJ = parseInt($scope.myJ);
 		$scope.myJ += n
+		if $scope.myJ == -1
+			$scope.myJ = 0
 		$scope.updateHash!
 
 
 	$scope.left = (n) !->
+		$scope.myI = parseInt($scope.myI);
 		$scope.myI += n
+		if $scope.myI == -1
+			$scope.myI = 0
 		$scope.updateHash!
 
 	$scope.goban = new Object;
