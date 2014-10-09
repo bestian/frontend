@@ -7,5 +7,6 @@
 /* line 9, ../sass/goban.scss */
 .goban-fixed-right {
   position: fixed;
+  top: 5px;
   right: 15px;
 }

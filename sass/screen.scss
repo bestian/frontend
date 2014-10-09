@@ -25,33 +25,41 @@ a {
 
 
 nav {
+	position: relative;
+	z-index:999999;
 	height: $nav;
-	padding: 15px;
-	font-size: 22px;
-
+	padding-top: 15px;
+	padding-left: 15px;
+	font-size: 24px;
+	background-color: hsla(0,0%,18%,1);
+	a {
+		color: white;
+	}
+	sub {
+		color: white;
+	}
 	ul {
 		list-style-type: none;
 		font-family: cursive, sen-seirf, arial;
+
 		.number {		
 			display:inline-block;
 			font-family: "times new roman", sen-seirf, arial;
 			margin-left:15px;
 			@include transform(skewX(-15deg));
-			sub {
-				font-size: 62%;
-			}
+			
 		}
 		li {
-			&:first-child {			
-				margin-left:75px;
-			}
 			display: inline;
 			padding: 5px;
 			a {
 				display: inline-block;
+				width: 15px;
+				height: 15px;
+				margin-left: 25px;
+				padding: 5px;
 				@include border-radius(50%);
 				border: 3px solid gray;
-				padding: 5px;
 				text-decoration: none;
 				&:hover, &:active, &.active {
 					background-color: mix(black,gray);
@@ -64,16 +72,20 @@ nav {
 #side {
 	width: $side;
 	float:left;
+	height: 420px;	
+	overflow-x: hidden;
+	overflow-y: auto;
+	margin-top : 25px;	
 	ul {
-		margin-left : 10%;		
+		margin-left : 10%;	
 		li {
-			margin-top :15px;
-			width: 100%;
+			margin-top : 10px;
+			width: 80%;
 			a {
 				display:inline-block;
-				padding: 8px;
+				padding-left: 15px;
 				width: 100%;
-				font-size: 22px;
+				font-size: 18px;
 				text-decoration: none;
 				&:hover, &:active,&.active {
 					margin-left : -5px;
@@ -82,8 +94,11 @@ nav {
 				&.elem {
 					margin-left:15px;
 				}
-				img.folder {
-					height:15px;
+				img{
+					margin-right:5px;
+					&.folder {
+						height:15px;
+					}
 				}
 				.arrowHead{
 					$a: 6px;
@@ -115,6 +130,7 @@ nav {
 	iframe {
 		width: 95% - $side;
 		position:absolute;
+		top:$nav + 10px;
 		right: 30px;
 		$f : hsla(0,50%,95%,1);
 		background-color : $f;
