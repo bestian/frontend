@@ -16,7 +16,8 @@ head
 body(ng-controller = "chainCtrl", ng-keydown="keyPress($event)")
 	nav(id = "chain" ng-cloak)
 		ul
-			a(ng-href = "{{path}}{{title}}{{myI}}") {{title}}
+			a(ng-href = "{{path}}{{title}}{{myI}}",
+				target = "_blank") {{title}}
 				span(class = "number") {{myI}}
 
 			sub -{{myJ}}

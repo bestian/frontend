@@ -59,6 +59,7 @@ chainCtrl = ($scope, $sce, $title, $path, $colMax,
 
 	$scope.left = (n) !->
 		loadPage!
+		$scope.goban.load parseInt($scope.myI) + n
 		$timeout (!-> 
 			$scope.myI = parseInt($scope.myI)
 			$scope.myI += n
@@ -67,7 +68,7 @@ chainCtrl = ($scope, $sce, $title, $path, $colMax,
 			if $scope.myI == $colMax + 1
 				$scope.myI = 0
 			$scope.updateHash!
-			$scope.goban.load $scope.myI),1000
+			),1000
 
 
 	$scope.up = (n) !->
@@ -86,7 +87,7 @@ chainCtrl = ($scope, $sce, $title, $path, $colMax,
 
 	$scope.goban = $goban;
 	$scope.goban.data = $dummy;
-	$scope.goban.load 0;
+	$scope.goban.load $scope.myI;
 
 toIndex = ->
 	(list)->
@@ -161,7 +162,7 @@ myGoban = ($http, $path, $title)->
 							or { name: list[1], isFolder: true, isClosed: isClosed}
 
 						obj
-		console.log(bestList)
+	#	console.log(bestList)
 		bestList
 
 	goban.load = (num) !->

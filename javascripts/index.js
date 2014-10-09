@@ -76,6 +76,7 @@
     };
     $scope.left = function(n){
       loadPage();
+      $scope.goban.load(parseInt($scope.myI) + n);
       $timeout(function(){
         $scope.myI = parseInt($scope.myI);
         $scope.myI += n;
@@ -86,7 +87,6 @@
           $scope.myI = 0;
         }
         $scope.updateHash();
-        $scope.goban.load($scope.myI);
       }, 1000);
     };
     $scope.up = function(n){
@@ -105,7 +105,7 @@
     };
     $scope.goban = $goban;
     $scope.goban.data = $dummy;
-    $scope.goban.load(0);
+    $scope.goban.load($scope.myI);
   };
   toIndex = function(){
     return function(list){
@@ -211,7 +211,6 @@
         };
         return obj;
       });
-      console.log(bestList);
       return bestList;
     };
     goban.load = function(num){
