@@ -66,13 +66,13 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)")
 				ng-src = "{{goban.getCurrentURL()}}")
 	div(id = "keyBordCtrl")
 		div(id = "up",ng-class = "{available: false}",
-					ng-click="goban.up(-1)")
+					ng-click="goban.dy(-1)")
 		div(id = "down",ng-class = "{available: false}",
-					ng-click="goban.up(1)")
+					ng-click="goban.dy(1)")
 		div(id = "left",ng-class = "{available: ture}",
-					ng-click="goban.left(-1)")
+					ng-click="goban.dx(-1)")
 		div(id = "right",ng-class = "{available: ture}",
-					ng-click="goban.left(1)")
+					ng-click="goban.dx(1)")
 		div(id = "backup",class = "backup")
 			a(ng-click="backup()")
 
