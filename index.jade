@@ -27,8 +27,8 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)")
 			li(ng-repeat="i in myColumnIndex")
 				a(ng-class = "{active: goban.myI == i}",
 					ng-click = "goban.setI(i)",)
-			li
-				a(href="https://github.com/bestian/goban",
+			
+			a(href="https://github.com/bestian/goban",
 					target = "_blank")
 					img(class = "goban-logo goban-fixed-right",
 						alt = "goban",
@@ -63,8 +63,7 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)")
 				target = "_blank") 按此可開啟新頁籤
 		iframe(id = "myFrame", ng-cloak,
 				ng-class = "{loading: goban.pageLoading}"
-				ng-src = "{{goban.getCurrentURL()}}",
-				width="100%", height = "642px")
+				ng-src = "{{goban.getCurrentURL()}}")
 	div(id = "keyBordCtrl")
 		div(id = "up",ng-class = "{available: false}",
 					ng-click="goban.up(-1)")

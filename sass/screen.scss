@@ -138,17 +138,14 @@ nav {
 }
 
 #main {
-	width: 95% - $side;
+	width: 100% - $side;
+	height: 80%;
 	float:right;
 	iframe {
-		width: 95% - $side;
-		position:absolute;
-		top:$nav + 10px;
-		right: 30px;
+		width: 100%;
+		height: 80%;
 		$f : hsla(0,50%,95%,1);
-		background-color : $f;
-		border :3px solid $f;
-		@include border-radius(15px);
+		background:url(../images/tiles.png);
 		@include transition(opacity 2s ease);
 		&.null,&.loading {
 			@include transition(opacity 0.5s ease);
@@ -159,16 +156,15 @@ nav {
 }
 
 #keyBordCtrl {
+    $backup : 100px;
 	$up: 15px;
-
 	position:fixed;
 	bottom:0px;
 	right:0px;
-	padding: 15px;
 	z-index:1;
-	width: 200px;
-	height: 200px;
-    $backup : 100px;
+	width: 150px;
+	height: 150px;
+	padding: $up;
 	#backup {
 		vertical-align:middle;
 		text-align:center;
@@ -199,24 +195,20 @@ nav {
 		border-left: $up*2 solid transparent;
 		width: 0px;
 	}
-
 	#up {
-		top: -$up;
+		top: -$up / 2;
 		border-bottom: $up solid cyan;
 		&:hover {			
 			border-bottom: $up solid mix(black, cyan);
 		}
 	}
-
 	#down {
-		top: $backup  + $up *2;
+		top: $backup  + $up*1.5;
 		border-top: $up solid cyan;
 		&:hover {			
 			border-top: $up solid mix(black, cyan);
 		}
 	}
-
-
 	#left,#right {
 		position:absolute;
 		top: $backup / 2 - $up;
@@ -224,17 +216,15 @@ nav {
 		border-top: $up*2 solid transparent;
 		border-bottom: $up*2 solid transparent;
 	}
-
 	#left {
-		left: -$up;
+		left: -$up / 2;
 		border-right: $up solid cyan;
 		&:hover {			
 			border-right: $up solid mix(black, cyan);
 		}
 	}
-
 	#right {
-		left: $backup  + $up *2;
+		left: $backup  + $up *1.5;
 		border-left: $up solid cyan;
 		&:hover {			
 			border-left: $up solid mix(black, cyan);
