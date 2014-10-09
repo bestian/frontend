@@ -143,10 +143,7 @@ myGoban = ($http, $sce, $path, $title, $hash, $timeout)->
 
 	goban
 
-angular.module 'chainApp' ['goban']
-	.constant '$path' 'https://ethercalc.org/'
-	.constant '$title' 'bt_frontend'
-	.constant '$colMax' 6
-	.constant '$dummy' myDummy
+angular.module 'goban' []
+	.factory '$hash' myHash
+	.factory '$goban' [\$http, \$sce, \$path, \$title, \$hash, \$timeout, myGoban]
 	.filter 'toIndex' toIndex
-	.controller 'chainCtrl' chainCtrl

@@ -190,12 +190,5 @@
     };
     return goban;
   };
-  angular.module('chainApp', ['goban'])
-  .controller('chainCtrl', chainCtrl)
-  .constant('$dummy', myDummy);
-  
-  angular.module('goban')
-  .constant('$path', 'https://ethercalc.org/')
-  .constant('$title', 'bt_frontend')
-  .constant('$colMax', 6)
+  angular.module('goban', []).factory('$hash', myHash).factory('$goban', ['$http', '$sce', '$path', '$title', '$hash', '$timeout', myGoban]).filter('toIndex', toIndex);
 }).call(this);

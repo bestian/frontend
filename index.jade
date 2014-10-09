@@ -7,35 +7,42 @@ head
 	meta(charset='utf-8')
 	link(href="stylesheets/screen.css", media="screen, projection", rel="stylesheet", type="text/css" )
 	link(href="stylesheets/print.css", media="print", rel="stylesheet", type="text/css" )
+	link(href="stylesheets/goban.css", media="screen, projection", rel="stylesheet", type="text/css" )
+
 
 //[if !IE]><!
 	link(href="stylesheets/ie.css", media="screen, projection, rel="stylesheet", type="text/css" )
 //<![endif]
 
 
-body(ng-controller = "chainCtrl", ng-keydown="keyPress($event)")
+body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)")
 	nav(id = "chain" ng-cloak)
 		ul
-			a(ng-href = "{{path}}{{title}}{{myI}}",
-				target = "_blank") {{title}}
-				span(class = "number") {{myI}}
+			a(ng-href = "{{goban.path}}{{goban.title}}{{goban.myI}}",
+				target = "_blank") {{goban.title}}
+				span(class = "number") {{goban.myI}}
 
-			sub -{{myJ}}
+			sub -{{goban.myJ}}
   
 			li(ng-repeat="i in myColumnIndex")
-				a(ng-href = "#{{title}}&{{i}}&{{myJ}}",
-					ng-class = "{active: myI == i}",
-					ng-click = "setI(i)",) 
+				a(ng-class = "{active: goban.myI == i}",
+					ng-click = "goban.setI(i)",)
+			li
+				a(href="https://github.com/bestian/goban",
+					target = "_blank")
+					img(class = "goban-logo goban-fixed-right",
+						alt = "goban",
+						src = "https://camo.githubusercontent.com/39e52c477ec7b1ec7fd55153dfa32bb2d7718fbf/687474703a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f362f36332f476f62616e5f31397831395f766964652e706e67")
 
 
 	div(id = "side", ng-cloak)
 		ul 
 			li(ng-repeat="j in goban.data | toIndex",
-				ng-click = "setJ(j)")
+				ng-click = "goban.setJ(j)")
 
 				a(ng-if = 'goban.data[j].isFolder'
 					ng-click = "$parent.goban.data[j].isClosed = !goban.data[j].isClosed;",
-					ng-class = "{active: myJ == j}")
+					ng-class = "{active: goban.myJ == j}")
 					img(class ="folder", ng-show = 'goban.data[j].isClosed', src = "images/isClosed.png")
 					img(class ="folder", ng-show = '!goban.data[j].isClosed', src = "images/isOpen.png")
 					{{goban.data[j].name || j}}
@@ -43,31 +50,31 @@ body(ng-controller = "chainCtrl", ng-keydown="keyPress($event)")
 				
 				a(ng-if = "!goban.data[j].isFolder"
 					ng-show = " goban.data[j].pIndex == 'self' || !goban.data[goban.data[j].pIndex].isClosed"
-					ng-href = "#{{title}}&{{myI}}&{{j}}",		
 					class = "elem",		
-					ng-class = "{active: myJ == j}")
+					ng-class = "{active: goban.myJ == j}")
 					img(ng-src = "http://www.google.com/s2/favicons?domain={{goban.data[j].url}}")
 					{{goban.data[j].name || j}}
 
 
 	div(id = "main")
 		iframe(id = "myFrame", ng-cloak,
-				ng-class = "{loading: pageLoading}"
-				ng-src = "{{trust(goban.data[myJ].url || goban.data[myJ+1].url)}}",
+				ng-class = "{loading: goban.pageLoading}"
+				ng-src = "{{goban.getCurrentURL()}}",
 				width="100%", height = "642px")
 	div(id = "keyBordCtrl")
 		div(id = "up",ng-class = "{available: false}",
-					ng-click="up(-1)")
+					ng-click="goban.up(-1)")
 		div(id = "down",ng-class = "{available: false}",
-					ng-click="up(1)")
+					ng-click="goban.up(1)")
 		div(id = "left",ng-class = "{available: ture}",
-					ng-click="left(-1)")
+					ng-click="goban.left(-1)")
 		div(id = "right",ng-class = "{available: ture}",
-					ng-click="left(1)")
+					ng-click="goban.left(1)")
 		div(id = "backup",class = "backup")
 			a(ng-click="backup()")
 
 
 
 	script(src = "bower_components/angular/angular.min.js")
+	script(src = "bower_components/goban/goban.js")
 	script(src = "javascripts/index.js")
