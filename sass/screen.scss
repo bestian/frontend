@@ -51,13 +51,14 @@ nav {
 		}
 		li {
 			display: inline;
-			padding: 5px;
+			padding: 1%;
 			a {
+				$w: 15px;
 				display: inline-block;
-				width: 15px;
-				height: 15px;
-				margin-left: 25px;
-				padding: 5px;
+				width: $w;
+				height: $w;
+				margin-left: 1%;
+				padding: 3px;
 				@include border-radius(50%);
 				border: 3px solid gray;
 				text-decoration: none;
@@ -82,12 +83,13 @@ nav {
 			margin-top : 10px;
 			width: 80%;
 			a {
+				$w: 18px;
 				display:inline-block;
 				padding-left: 15px;
-				width: 18px * 8;
-				height: 18px;
+				width: $w * 8;
+				height: $w;
 				overflow:hidden;
-				font-size: 18px;
+				font-size: $w;
 				line-height: 120%;
 				text-decoration: none;
 				@include transition(all 0.8s ease);

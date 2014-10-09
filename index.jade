@@ -17,7 +17,7 @@ head
 
 body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)")
 	nav(id = "chain" ng-cloak)
-		ul
+		ul 
 			a(ng-href = "{{goban.path}}{{goban.title}}{{goban.myI}}",
 				target = "_blank") {{goban.title}}
 				span(class = "number") {{goban.myI}}
@@ -57,6 +57,10 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)")
 
 
 	div(id = "main")
+		div(id = "myBlank", ng-cloak,
+			class = "goban-blank")
+			a(ng-href = "{{goban.data[goban.myJ].url}}",
+				target = "_blank") 按此可開啟新頁籤
 		iframe(id = "myFrame", ng-cloak,
 				ng-class = "{loading: goban.pageLoading}"
 				ng-src = "{{goban.getCurrentURL()}}",

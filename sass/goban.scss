@@ -11,3 +11,21 @@
 	top: 5px;
 	right:15px;
 }
+
+.goban-blank {
+	position: absolute;
+	z-index: 3;
+	top: 70px;
+	left: 50%;
+	opacity: 0.8;
+	a {
+		$a: 150px;
+		$h: 20px;
+		padding:15px;
+		margin-left: -$a / 2;
+		height: $h;
+		font-size:$h;
+		background-color: white;
+		@include border-radius(0px 0px 50% 50%);
+	}
+}
