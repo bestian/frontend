@@ -20,6 +20,7 @@ html {
 
 a {	
 	cursor:pointer;
+	text-decoration:none;
 }
 
 
@@ -119,9 +120,9 @@ nav {
 		background-color : $f;
 		border :3px solid $f;
 		@include border-radius(15px);
-		@include transition(opacity 0.5s ease);
-		&.null {
-			@include transition(opacity 0.2s ease);
+		@include transition(opacity 2s ease);
+		&.null,&.loading {
+			@include transition(opacity 0.5s ease);
 			opacity: 0;
 			z-index: -5;
 		}

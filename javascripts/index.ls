@@ -1,14 +1,16 @@
 
 
 chainCtrl = ($scope, $sce, $title, $path, $colMax,
-				$dummy, $hash, $goban) !->
+				$dummy, $hash, $goban , $timeout) !->
 
-	
+	$scope.path = $path	
 	$scope.myColumnIndex = [to $colMax]
 	$scope.myFolderIndex = [to 10]
 	$scope.myI = $hash.asArray![1] or 0
 	$scope.myJ = $hash.asArray![2]	or 0
 	$scope.title = $hash.asArray![0] or $title
+
+	$scope.pageLoading = false;
 
 	$scope.backup = !->
 		for i in $scope.myFolderIndex
@@ -35,31 +37,55 @@ chainCtrl = ($scope, $sce, $title, $path, $colMax,
 	$scope.updateHash = !->
 		$hash.upDateFromArray [$scope.title,$scope.myI,$scope.myJ]
 
+
+	loadPage = !->
+		$scope.pageLoading = true	
+		$timeout (!-> $scope.pageLoading = false),2300
+
+	$scope.setI = (n) !->
+		if $scope.myI != n
+			loadPage!
+			$timeout (!-> 
+				$scope.myI = n
+				$scope.updateHash!
+				$scope.goban.load $scope.myI),1000
+
+	$scope.setJ = (n) !->		
+		if $scope.myJ != n
+			loadPage!
+			$timeout (!-> 
+				$scope.myJ = n
+				$scope.updateHash!),1000
+
 	$scope.left = (n) !->
-		$scope.myI = parseInt($scope.myI);
-		$scope.myI += n
-		if $scope.myI == -1
-			$scope.myI = $colMax
-		if $scope.myI == $colMax + 1
-			$scope.myI = 0
-		$scope.updateHash!
-		$scope.goban.load $scope.myI;
+		loadPage!
+		$timeout (!-> 
+			$scope.myI = parseInt($scope.myI)
+			$scope.myI += n
+			if $scope.myI == -1
+				$scope.myI = $colMax
+			if $scope.myI == $colMax + 1
+				$scope.myI = 0
+			$scope.updateHash!
+			$scope.goban.load $scope.myI),1000
 
 
 	$scope.up = (n) !->
-		$scope.myJ = parseInt($scope.myJ);
-		$scope.myJ += n
-		if $scope.myJ == -1
-			$scope.myJ = $scope.goban.data.length-1
-		if $scope.myJ == $scope.goban.data.length
-			$scope.myJ = 0
-		$scope.updateHash!
+		loadPage!
+		$timeout (!-> 
+			$scope.myJ = parseInt($scope.myJ)
+			$scope.myJ += n
+			if $scope.myJ == -1
+				$scope.myJ = $scope.goban.data.length-1
+			if $scope.myJ == $scope.goban.data.length
+				$scope.myJ = 0
+			$scope.updateHash!),1000
+		
 
 
 
 	$scope.goban = $goban;
 	$scope.goban.data = $dummy;
-
 	$scope.goban.load 0;
 
 toIndex = ->
