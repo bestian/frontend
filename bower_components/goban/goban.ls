@@ -1,41 +1,4 @@
 
-
-chainCtrl = ($scope, $colMax,
-				$dummy, $goban , $timeout) !->
-
-	$scope.myColumnIndex = [to $colMax]
-	$scope.myFolderIndex = [to 10]
-
-	$scope.backup = !->
-		for i in $scope.myFolderIndex
-			window.open $path+$title+i+'.csv'  \_blank "width=0, height=0, titlebar=no, toolbar=no"
-
-	$scope.goban = $goban;
-	$scope.goban.data = $dummy;
-	$scope.goban.load $goban.myI;
-
-	window.uploadDone= !->
-		alert('ha')
-		# have access to $scope here
-
-toIndex = ->
-	(list)->
-		[to list.length-1]
-
-myHash = ->
-	data: location.hash
-	asArray: ->
-		@.data.replace \# '' .split \&
-	upDateFromArray: (list) !->
-		location.hash = \# + list.join \&
-
-
-myDummy = 
-		*name: '赤皮仔'
-			isFolder: false
-			url:'https://autolearn.hackpad.com/33EfKKhNtF8'
-
-
 myGoban = ($http, $sce, $path, $title, $hash, $timeout)->
 	goban = new Object;
 
