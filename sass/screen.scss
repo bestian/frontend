@@ -85,11 +85,16 @@ nav {
 				display:inline-block;
 				padding-left: 15px;
 				width: 100%;
+				height: 18px;
+				overflow:hidden;
 				font-size: 18px;
 				text-decoration: none;
+				@include transition(all 0.8s ease);
+
 				&:hover, &:active,&.active {
 					margin-left : -5px;
 					border-left: 5px solid mix(black,cyan);
+					height: 36px;
 				}
 				&.elem {
 					margin-left:15px;
