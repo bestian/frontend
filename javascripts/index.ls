@@ -1,10 +1,10 @@
 
 
-chainCtrl = ($scope, $sce, $title, $path,
+chainCtrl = ($scope, $sce, $title, $path, $colMax,
 				$dummy, $hash, $goban) !->
 
 	
-	$scope.myColumnIndex = [to 6]
+	$scope.myColumnIndex = [to $colMax]
 	$scope.myFolderIndex = [to 10]
 	$scope.myI = $hash.asArray![1] or 0
 	$scope.myJ = $hash.asArray![2]	or 0
@@ -35,20 +35,27 @@ chainCtrl = ($scope, $sce, $title, $path,
 	$scope.updateHash = !->
 		$hash.upDateFromArray [$scope.title,$scope.myI,$scope.myJ]
 
-	$scope.up = (n) !->
-		$scope.myJ = parseInt($scope.myJ);
-		$scope.myJ += n
-		if $scope.myJ == -1
-			$scope.myJ = 0
-		$scope.updateHash!
-
-
 	$scope.left = (n) !->
 		$scope.myI = parseInt($scope.myI);
 		$scope.myI += n
 		if $scope.myI == -1
+			$scope.myI = $colMax
+		if $scope.myI == $colMax + 1
 			$scope.myI = 0
 		$scope.updateHash!
+		$scope.goban.load $scope.myI;
+
+
+	$scope.up = (n) !->
+		$scope.myJ = parseInt($scope.myJ);
+		$scope.myJ += n
+		if $scope.myJ == -1
+			$scope.myJ = $scope.goban.data.length-1
+		if $scope.myJ == $scope.goban.data.length
+			$scope.myJ = 0
+		$scope.updateHash!
+
+
 
 	$scope.goban = $goban;
 	$scope.goban.data = $dummy;
@@ -106,15 +113,35 @@ myDummy =
 myGoban = ($http, $path, $title)->
 	goban = new Object;
 
-	myLoad = (num)-> 
-		$http {method: "GET",url: $path + $title + num + '.csv',dataType: "text"}
-			.success (data) ->
-				console.log data
-				data	
 
-	goban.load = (num) !->	
-		myLoad num
-	#	this.data = myLoad num	
+	parseFromCSV = (csv) ->
+		allTextLines = csv.split(/\r\n|\n/)
+		bodyLines = allTextLines.slice(2)
+		goodList = bodyLines
+					.map (text) -> text.split \,
+					.filter (list) -> list[1]
+
+		lastFolder = {id:0 , set: (n)!-> this.id = n}
+		
+		bestList = goodList.map (list,index) ->
+						isClosed = false
+						if not list[0]
+							lastFolder.set(index)
+							if list[2] and list[2].search /expand(.+)true/ > -1
+								isClosed = true
+
+						obj = (list[0]
+						and {url: list[0].replace(/["\s]/g, ''), name: list[1].replace(/["\s]/g, ''), isFolder: false, pIndex: lastFolder.id})
+							or { name: list[1], isFolder: true, isClosed: isClosed}
+
+						obj
+		console.log(bestList)
+		bestList
+
+	goban.load = (num) !->
+		$http {method: "GET",url: $path + $title + num + '.csv',dataType: "text"}
+				.success (data) ->
+					goban.data = parseFromCSV data
 
 	#todo : parseData
 	
@@ -123,6 +150,7 @@ myGoban = ($http, $path, $title)->
 angular.module 'chainApp' []
 	.constant '$path' 'https://ethercalc.org/'
 	.constant '$title' 'bt_frontend'
+	.constant '$colMax' 6
 	.constant '$dummy' myDummy
 	.factory '$hash' myHash
 	.factory '$goban' [\$http,\$path, \$title, myGoban]
