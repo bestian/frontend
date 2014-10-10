@@ -1,4 +1,4 @@
-chainCtrl = ($scope, $colMax, $path, $title
+chainCtrl = ($window, $scope, $colMax, $path, $title
 				$dummy, $goban , $timeout) !->
 
 	$scope.myColumnIndex = [to $colMax]
@@ -11,6 +11,11 @@ chainCtrl = ($scope, $colMax, $path, $title
 	$scope.goban = $goban;
 	$scope.goban.data = $dummy;
 	$scope.goban.load $goban.myI;
+
+	$scope.navHeight = 50;
+
+	$scope.countHeight = ->
+		$window.innerHeight - $scope.navHeight - 40
 
 
 myDummy = 
