@@ -23,7 +23,8 @@ head
 //<![endif]
 
 
-body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)")
+body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
+		ng-style="{height: countHeight() + 'px'}")
 	nav(id = "chain" ng-cloak,
 		ng-style = "{height: navHeight + 'px'}")
 		ul 
@@ -45,7 +46,7 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)")
 
 
 	div(id = "side", ng-cloak,
-		ng-style = "{height: countHeight() + 'px'}")
+		ng-style = "{height: countHeight() - navHeight + 'px'}")
 		ul 
 			li(ng-repeat="j in goban.data | toIndex",
 				ng-click = "goban.setJ(j)")
@@ -67,7 +68,7 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)")
 
 
 	div(id = "main",
-		ng-style = "{height: countHeight() + 'px'}")
+		ng-style = "{height: countHeight() - navHeight + 'px'}")
 		div(id = "myBlank", ng-cloak,
 			class = "goban-blank")
 			a(ng-href = "{{goban.data[goban.myJ].url}}",

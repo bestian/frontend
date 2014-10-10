@@ -22,7 +22,7 @@
     $scope.goban.load($goban.myI);
     $scope.navHeight = 50;
     $scope.countHeight = function(){
-      return $window.innerHeight - $scope.navHeight - 40;
+      return $window.innerHeight - 40;
     };
   };
   myDummy = {

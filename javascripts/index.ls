@@ -15,7 +15,7 @@ chainCtrl = ($window, $scope, $colMax, $path, $title
 	$scope.navHeight = 50;
 
 	$scope.countHeight = ->
-		$window.innerHeight - $scope.navHeight - 40
+		$window.innerHeight - 40
 
 
 myDummy = 
