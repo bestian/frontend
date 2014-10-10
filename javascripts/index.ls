@@ -1,4 +1,4 @@
-chainCtrl = ($scope, $colMax,
+chainCtrl = ($scope, $colMax, $path, $title
 				$dummy, $goban , $timeout) !->
 
 	$scope.myColumnIndex = [to $colMax]
