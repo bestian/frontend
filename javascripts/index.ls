@@ -1,21 +1,19 @@
 chainCtrl = ($window, $scope, $colMax, $path, $title
 				$dummy, $goban , $timeout) !->
 
-	$scope.myColumnIndex = [to $colMax]
-	$scope.myFolderIndex = [to 10]
-
-	$scope.backup = !->
-		for i in $scope.myFolderIndex
-			window.open $path+$title+i+'.csv'  \_blank "width=0, height=0, titlebar=no, toolbar=no"
 
 	$scope.goban = $goban;
 	$scope.goban.data = $dummy;
 	$scope.goban.load $goban.myI;
+	
 
 	$scope.navHeight = 50;
 
 	$scope.countHeight = ->
 		$window.innerHeight - 40
+
+	$scope.countWidth = ->
+		$window.innerWidth
 
 
 myDummy = 

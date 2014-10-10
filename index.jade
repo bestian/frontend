@@ -12,10 +12,9 @@ head
 	meta(property="og:description" content="以黑客棋盤匯整的前端學習資源，循續漸進，含原創教材與各方精選教材")
 
 	link(rel="shortcut icon",href="favicon.ico", type="image/x-icon")
-
 	link(href="stylesheets/screen.css", media="screen, projection", rel="stylesheet", type="text/css" )
 	link(href="stylesheets/print.css", media="print", rel="stylesheet", type="text/css" )
-	link(href="stylesheets/goban.css", media="screen, projection", rel="stylesheet", type="text/css" )
+	link(href="stylesheets/goban-ui.css", media="screen, projection", rel="stylesheet", type="text/css" )
 
 
 //[if !IE]><!
@@ -27,14 +26,22 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 		ng-style="{height: countHeight() + 'px'}")
 	nav(id = "chain" ng-cloak,
 		ng-style = "{height: navHeight + 'px'}")
-		ul 
-			a(ng-href = "{{goban.path}}{{goban.title}}{{goban.myI}}",
-				target = "_blank") {{goban.title}}
-				span(class = "number") {{goban.myI}}
 
-			sub -{{goban.myJ}}
+		ul 
+			a(id = "goban-toggleSidebar", ng-click = "hideSideBar = !hideSideBar")
+				span(class = "bar1")
+				span(class = "bar2")
+				span(class = "bar3")
+
+			span(ng-cloak)
+				a(ng-href = "{{goban.path}}{{goban.title}}{{goban.myI}}",
+					target = "_blank")
+					span(id = "titie",
+						ng-hide = "hideSideBar") {{goban.title}}
+					span(class = "number") {{goban.myI}}
+				sub -{{goban.myJ}}
   
-			li(ng-repeat="i in myColumnIndex")
+			li(ng-repeat="i in goban.myColumnIndex")
 				a(ng-class = "{active: goban.myI == i}",
 					ng-click = "goban.setI(i)",)
 			
@@ -46,7 +53,7 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 
 
 	div(id = "side", ng-cloak,
-		ng-style = "{height: countHeight() - navHeight + 'px'}")
+		ng-style = "{height: countHeight() - navHeight + 'px', width : hideSideBar && '0%' || '200px'}")
 		ul 
 			li(ng-repeat="j in goban.data | toIndex",
 				ng-click = "goban.setJ(j)")
@@ -68,7 +75,7 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 
 
 	div(id = "main",
-		ng-style = "{height: countHeight() - navHeight + 'px'}")
+		ng-style = "{height: countHeight() - navHeight + 'px', width : hideSideBar && '100%' || countWidth() - 200 + 'px'}")
 		div(id = "myBlank", ng-cloak,
 			class = "goban-blank")
 			a(ng-href = "{{goban.data[goban.myJ].url}}",
@@ -76,7 +83,7 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 		iframe(id = "myFrame", ng-cloak,
 				ng-class = "{loading: goban.pageLoading}"
 				ng-src = "{{goban.getCurrentURL()}}")
-	div(id = "keyBordCtrl")
+	div(id = "goban-keyBordCtrl")
 		div(id = "up",ng-class = "{available: false}",
 					ng-click="goban.dy(-1)")
 		div(id = "down",ng-class = "{available: false}",
@@ -86,7 +93,7 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 		div(id = "right",ng-class = "{available: ture}",
 					ng-click="goban.dx(1)")
 		div(id = "backup",class = "backup")
-			a(ng-click="backup()")
+			a(ng-click="goban.backupAll()")
 
 
 

@@ -2,27 +2,15 @@
 (function(){
   var chainCtrl, myDummy;
   chainCtrl = function($window, $scope, $colMax, $path, $title, $dummy, $goban, $timeout){
-    var res$, i$, ridx$;
-    res$ = [];
-    for (i$ = 0; i$ <= $colMax; ++i$) {
-      ridx$ = i$;
-      res$.push(ridx$);
-    }
-    $scope.myColumnIndex = res$;
-    $scope.myFolderIndex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    $scope.backup = function(){
-      var i$, ref$, len$, i;
-      for (i$ = 0, len$ = (ref$ = $scope.myFolderIndex).length; i$ < len$; ++i$) {
-        i = ref$[i$];
-        window.open($path + $title + i + '.csv', '_blank', "width=0, height=0, titlebar=no, toolbar=no");
-      }
-    };
     $scope.goban = $goban;
     $scope.goban.data = $dummy;
     $scope.goban.load($goban.myI);
     $scope.navHeight = 50;
     $scope.countHeight = function(){
       return $window.innerHeight - 40;
+    };
+    $scope.countWidth = function(){
+      return $window.innerWidth;
     };
   };
   myDummy = {

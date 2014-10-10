@@ -72,6 +72,10 @@ nav {
 	}
 }
 
+#side, #main {
+	@include transition(width 0.2s ease);
+}
+
 #side {
 	@include box-sizing(border-box);
 	width: $side;
@@ -157,81 +161,3 @@ nav {
 	}
 }
 
-#keyBordCtrl {
-    $backup : 100px;
-	$up: 15px;
-	position:fixed;
-	bottom:0px;
-	right:0px;
-	z-index:1;
-	width: 150px;
-	height: 150px;
-	padding: $up;
-	#backup {
-		vertical-align:middle;
-		text-align:center;
-		line-height:$backup;
-		@include border-radius(50%);
-		background-color:cyan;
-		width: $backup;
-		height: $backup;
-		a {
-			display: inline-block;
-			position: relative;
-			top: $up*1.5;
-			border-top: $up*3 solid mix(white, cyan);
-			border-right: $up*2 solid transparent;
-			border-left: $up*2 solid transparent;
-			&:hover {			
-				border-top: $up*3 solid mix(black, cyan);
-			}				
-		}
-		
-
-	}
-
-	#up,#down {
-		position:absolute;
-		left: $backup / 2 - $up;
-		border-right: $up*2 solid transparent;
-		border-left: $up*2 solid transparent;
-		width: 0px;
-	}
-	#up {
-		top: -$up / 2;
-		border-bottom: $up solid cyan;
-		&:hover {			
-			border-bottom: $up solid mix(black, cyan);
-		}
-	}
-	#down {
-		top: $backup  + $up*1.5;
-		border-top: $up solid cyan;
-		&:hover {			
-			border-top: $up solid mix(black, cyan);
-		}
-	}
-	#left,#right {
-		position:absolute;
-		top: $backup / 2 - $up;
-		width: 0px;		
-		border-top: $up*2 solid transparent;
-		border-bottom: $up*2 solid transparent;
-	}
-	#left {
-		left: -$up / 2;
-		border-right: $up solid cyan;
-		&:hover {			
-			border-right: $up solid mix(black, cyan);
-		}
-	}
-	#right {
-		left: $backup  + $up *1.5;
-		border-left: $up solid cyan;
-		&:hover {			
-			border-left: $up solid mix(black, cyan);
-		}
-	}
-
-
-}
