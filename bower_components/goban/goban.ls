@@ -70,22 +70,29 @@ myGoban = ($http, $sce, $path, $title, $hash, $colMax, $timeout)->
 
 
 	goban.load = (num) !->
-		$http {method: "GET",url: $path + $title + num + '.csv',dataType: "text"}
+
+		folderName = $title + num
+		if typeof goban.folderNames == \array
+			folderName = goban.folderNames[num]
+
+		$http {method: "GET",url: $path + folderName + '.csv',dataType: "text"}
 				.success (data) ->
 					goban.data = parseFromCSV data
+
+
 
 	goban.keyDown = ($event) !->
 		console.log $event
 		$event.preventDefault()
 		code = $event.keyCode
 		if code == 40
-			goban.up 1
+			goban.dy 1
 		if code == 38
-			goban.up -1
+			goban.dy -1
 		if code == 37
-			goban.left -1
+			goban.dx -1
 		if code == 39
-			goban.left 1
+			goban.dx 1
 		if code == 32
 			goban.data[goban.myJ].isClosed = !goban.data[goban.myJ].isClosed;
 	

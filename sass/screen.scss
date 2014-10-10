@@ -10,6 +10,7 @@
 $side : 15%;
 $nav : 50px;
 $nav-bg-color : hsla(0,0%,18%,1);
+$frameHeight: 600px;
 
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
@@ -72,9 +73,10 @@ nav {
 }
 
 #side {
+	@include box-sizing(border-box);
 	width: $side;
 	float:left;
-	height: 420px;	
+	height: $frameHeight;	
 	overflow-x: hidden;
 	overflow-y: auto;
 	margin-top : 25px;	
@@ -139,11 +141,11 @@ nav {
 
 #main {
 	width: 100% - $side;
-	height: 80%;
+	height: $frameHeight;
 	float:right;
 	iframe {
 		width: 100%;
-		height: 80%;
+		height: 100%;
 		$f : hsla(0,50%,95%,1);
 		background:url(../images/tiles.png);
 		@include transition(opacity 2s ease);
