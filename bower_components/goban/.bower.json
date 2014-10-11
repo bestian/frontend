@@ -2,6 +2,7 @@
   "name": "goban",
   "main": "goban.js",
   "license": "CC0",
+  "version": "0.1.2",
   "authors": [
     "Bestian Tang <besitan@gmail.com>"
   ],
@@ -14,6 +15,7 @@
   },
   "keywords": [
     "angular",
+    "ethercalc",
     "hackfoldr",
     "hackfolder",
     "g0v",
@@ -27,16 +29,18 @@
     "test",
     "tests",
     "package.json",
-    "package.g0v.json"
+    "package.g0v.json",
+    "*.ls",
+    "*.scss"
   ],
-  "_release": "6b397bb1fa",
+  "_release": "0.1.2",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "6b397bb1fa04142a2f79137367d12826d74b4e70"
+    "type": "version",
+    "tag": "v0.1.2",
+    "commit": "26e69e642e4b329a29f1d21377b0a0055806a205"
   },
   "_source": "git://github.com/bestian/goban.git",
-  "_target": "*",
+  "_target": "~0.1.2",
   "_originalSource": "goban",
   "_direct": true
 }

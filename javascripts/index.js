@@ -18,5 +18,5 @@
     isFolder: false,
     url: 'https://autolearn.hackpad.com/33EfKKhNtF8'
   };
-  angular.module('chainApp', ['goban']).constant('$gobanPath', 'https://ethercalc.org/').constant('$gobanTitle', 'bt_frontend').constant('$gobanMax', 6).constant('$dummy', myDummy).controller('chainCtrl', chainCtrl);
+  angular.module('chainApp', ['goban']).constant('$gobanPath', 'https://ethercalc.org/').constant('$gobanTitle', 'bt_frontend').constant('$gobanMax', 7).constant('$dummy', myDummy).controller('chainCtrl', chainCtrl);
 }).call(this);

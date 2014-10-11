@@ -24,6 +24,6 @@ myDummy =
 angular.module 'chainApp' ['goban']
 	.constant '$gobanPath' 'https://ethercalc.org/'
 	.constant '$gobanTitle' 'bt_frontend'
-	.constant '$gobanMax' 6
+	.constant '$gobanMax' 7
 	.constant '$dummy' myDummy
 	.controller 'chainCtrl' chainCtrl

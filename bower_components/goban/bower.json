@@ -2,7 +2,7 @@
   "name": "goban",
   "main": "goban.js",
   "license": "CC0",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "authors": [
     "Bestian Tang <besitan@gmail.com>"
   ],
@@ -15,6 +15,7 @@
   },
   "keywords": [
     "angular",
+    "ethercalc",
     "hackfoldr",
     "hackfolder",
     "g0v",
@@ -28,6 +29,8 @@
     "test",
     "tests",
     "package.json",
-    "package.g0v.json"
+    "package.g0v.json",    
+    "*.ls",
+    "*.scss"
   ]
 }
