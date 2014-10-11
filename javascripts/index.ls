@@ -1,5 +1,4 @@
-chainCtrl = ($window, $scope, $colMax, $path, $title
-				$dummy, $goban , $timeout) !->
+chainCtrl = ($window, $scope, $dummy, $goban) !->
 
 
 	$scope.goban = $goban;
@@ -23,8 +22,8 @@ myDummy =
 
 
 angular.module 'chainApp' ['goban']
-	.constant '$path' 'https://ethercalc.org/'
-	.constant '$title' 'bt_frontend'
-	.constant '$colMax' 6
+	.constant '$gobanPath' 'https://ethercalc.org/'
+	.constant '$gobanTitle' 'bt_frontend'
+	.constant '$gobanMax' 6
 	.constant '$dummy' myDummy
 	.controller 'chainCtrl' chainCtrl
