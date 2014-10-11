@@ -10,7 +10,7 @@
       return $window.innerHeight - 40;
     };
     $scope.countWidth = function(){
-      return $window.innerWidth;
+      return $window.innerWidth - 220;
     };
   };
   myDummy = {

@@ -1,18 +1,18 @@
 chainCtrl = ($window, $scope, $dummy, $goban) !->
 
 
-	$scope.goban = $goban;
-	$scope.goban.data = $dummy;
-	$scope.goban.load $goban.myI;
+	$scope.goban = $goban
+	$scope.goban.data = $dummy
+	$scope.goban.load $goban.myI
 	
 
-	$scope.navHeight = 50;
+	$scope.navHeight = 50
 
 	$scope.countHeight = ->
 		$window.innerHeight - 40
-
 	$scope.countWidth = ->
-		$window.innerWidth
+		$window.innerWidth - 220
+
 
 
 myDummy = 
