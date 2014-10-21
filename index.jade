@@ -14,7 +14,7 @@ head
 	link(rel="shortcut icon",href="favicon.ico", type="image/x-icon")
 	link(href="stylesheets/screen.css", media="screen, projection", rel="stylesheet", type="text/css" )
 	link(href="stylesheets/print.css", media="print", rel="stylesheet", type="text/css" )
-	link(href="stylesheets/goban-ui.css", media="screen, projection", rel="stylesheet", type="text/css" )
+	link(href="bower_components/goban/goban-ui.css", media="screen, projection", rel="stylesheet", type="text/css" )
 
 
 //[if !IE]><!
@@ -24,7 +24,7 @@ head
 
 body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 		ng-style="{height: countHeight() + 'px'}", )
-	nav(id = "chain", ng-cloak,
+	nav(id = "goban-nav", ng-cloak,
 		ng-style = "{height: navHeight + 'px'}")
 
 		ul
@@ -36,7 +36,7 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 			span(ng-cloak)
 				a(ng-href = "{{goban.path}}{{goban.title}}{{goban.myI}}",
 					target = "_blank")
-					span(id = "titie",
+					span(id = "goban-title",
 						ng-hide = "hideSideBar") {{goban.title}}
 					span(class = "number") {{goban.myI}}
 				sub -{{goban.myJ}}
@@ -52,8 +52,11 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 						src = "https://camo.githubusercontent.com/39e52c477ec7b1ec7fd55153dfa32bb2d7718fbf/687474703a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f362f36332f476f62616e5f31397831395f766964652e706e67")
 
 
-	div(id = "side", ng-cloak,
+	div(id = "goban-side", ng-cloak,
 		ng-style = "{height: countHeight() - navHeight + 'px', width : (hideSideBar && '0%') || '200px'}")
+		a(ng-href = "{{goban.path}}{{goban.title}}{{goban.myI}}",
+					target = "_blank")
+					span(id = "goban-sectionTitle") {{goban.sectionTitle}}
 		ul 
 			li(ng-repeat="j in goban.data | toIndex",
 				ng-click = "goban.setJ(j)")
@@ -74,7 +77,7 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 					{{goban.data[j].name || j}}
 
 
-	div(id = "main",
+	div(id = "goban-main",
 		ng-style = "{height: countHeight() - navHeight + 'px', width : (hideSideBar && '100%') || countWidth() + 'px'}")
 		div(id = "myBlank", ng-cloak,
 			class = "goban-blank")

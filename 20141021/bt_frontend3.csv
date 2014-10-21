@@ -1,0 +1,30 @@
+,
+,angular入門
+,
+" https://docs.angularjs.org/api/ng/function/angular.bootstrap",安裝與啟動
+,
+,單向綁定
+" https://docs.angularjs.org/api/ng/directive/ngRepeat",ng-repeat
+" https://docs.angularjs.org/api/ng/directive/ngBind",ng-bind
+https://docs.angularjs.org/api/ng/directive/ngBindTemplate,ng-bind-template
+,
+,雙向綁定
+" https://docs.angularjs.org/api/ng/directive/ngModel",模型ng-model
+" http://jsbin.com/gulema/2/watch?output",選單ng-option
+,
+,顯示開關
+" https://docs.angularjs.org/api/ng/directive/ngIf",ng-if
+" https://docs.angularjs.org/api/ng/directive/ngShow",ng-show
+" https://docs.angularjs.org/api/ng/directive/ngHide",ng-hide
+,
+,
+,樣式綁定
+" https://docs.angularjs.org/api/ng/directive/ngClass",ng-class
+" https://docs.angularjs.org/api/ng/directive/ngStyle",ng-style
+,
+,
+,
+https://angularjs.org/,angular主頁
+,
+,進階結構
+" https://docs.angularjs.org/guide/providers",angular的資訊流
