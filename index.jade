@@ -17,6 +17,7 @@ head
 	link(href="bower_components/goban/goban-ui.css", media="screen, projection", rel="stylesheet", type="text/css" )
 
 
+
 //[if !IE]><!
 	link(href="stylesheets/ie.css", media="screen, projection, rel="stylesheet", type="text/css" )
 //<![endif]
@@ -43,7 +44,8 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
   
 			li(ng-repeat="i in goban.myColumnIndex")
 				a(ng-class = "{active: goban.myI == i}",
-					ng-click = "goban.setI(i)",)
+					ng-click = "goban.setI(i)")
+					img(class = "goban-nav-icon",ng-src = "{{icons[i]}}")
 			
 			a(href="https://github.com/bestian/goban",
 					target = "_blank")
