@@ -80,7 +80,8 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 
 
 	div(id = "goban-main",
-		ng-style = "{height: countHeight() - navHeight + 'px', width : (hideSideBar && '100%') || countWidth() + 'px'}")
+		ng-class = "{full: hideSideBar}",
+		ng-style = "{height: countHeight() - navHeight + 'px'")
 		div(id = "myBlank", ng-cloak,
 			class = "goban-blank")
 			a(ng-href = "{{goban.data[goban.myJ].url}}",

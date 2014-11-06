@@ -15,9 +15,6 @@
     $scope.countHeight = function(){
       return $window.innerHeight - 40;
     };
-    $scope.countWidth = function(){
-      return $window.innerWidth - 220;
-    };
   };
   myDummy = {
     name: '赤皮仔',
