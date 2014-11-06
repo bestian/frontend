@@ -4,6 +4,7 @@
   chainCtrl = function($window, $scope, $dummy, $goban){
     $scope.goban = $goban;
     $scope.goban.data = $dummy;
+    $goban.myI = 1;
     $scope.goban.load($goban.myI);
     $scope.icons = 
     ['http://static.jsbin.com/images/dave.min.svg',
