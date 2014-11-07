@@ -1,0 +1,41 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'jade' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose config Skipping project config: /Users/bestian/.npmrc. (matches userconfig)
+5 warn package.json gem@0.0.1 No repository field.
+6 warn package.json livescript@0.0.1 No repository field.
+7 verbose cache add [ 'jade', null ]
+8 verbose cache add name=undefined spec="jade" args=["jade",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'jade',
+9 verbose parsed url   path: 'jade',
+9 verbose parsed url   href: 'jade' }
+10 silly lockFile 5bd60fae-jade jade
+11 verbose lock jade /Users/bestian/.npm/5bd60fae-jade.lock
+12 silly lockFile 5bd60fae-jade jade
+13 error Error: Attempt to unlock jade, which hasn't been locked
+13 error     at unlock (/usr/local/lib/node_modules/npm/lib/utils/locker.js:44:11)
+13 error     at cb (/usr/local/lib/node_modules/npm/lib/cache/add-local.js:30:5)
+13 error     at /usr/local/lib/node_modules/npm/lib/cache/add-local.js:47:20
+13 error     at /usr/local/lib/node_modules/npm/lib/utils/locker.js:30:7
+13 error     at cb (/usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:149:38)
+13 error     at /usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:177:38
+13 error     at Object.oncomplete (fs.js:107:15)
+14 error If you need help, you may report this *entire* log,
+14 error including the npm and node versions, at:
+14 error     <http://github.com/npm/npm/issues>
+15 error System Darwin 11.4.2
+16 error command "node" "/usr/local/bin/npm" "install" "jade"
+17 error cwd /Users/bestian/Documents/frontend
+18 error node -v v0.10.33
+19 error npm -v 1.4.28
+20 verbose exit [ 1, true ]
