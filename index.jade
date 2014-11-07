@@ -1,10 +1,10 @@
 doctype html
-html(lang="zh-tw" ng-app="chainApp")
+html(lang="zh-tw" ng-app="chainApp" ng-controller = "chainCtrl")
 
 head
-	title Frontend
+	title(ng-bind-template="{{gobantitle}}@Bestian的學習空間")
 	meta(charset='utf-8')
-
+	
 	meta(property="og:title" content="網路前端工程@Bestian的學習空間")
 	meta(property="og:type" content="website")
 	meta(property="og:url" content="https://bestian.github.io/frontend/")
@@ -17,13 +17,12 @@ head
 	link(href="bower_components/goban/goban-ui.css", media="screen, projection", rel="stylesheet", type="text/css" )
 
 
-
 //[if !IE]><!
 	link(href="stylesheets/ie.css", media="screen, projection, rel="stylesheet", type="text/css" )
 //<![endif]
 
 
-body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
+body(ng-keydown="goban.keyDown($event)",
 		ng-style="{height: countHeight() + 'px'}", )
 	nav(id = "goban-nav", ng-cloak,
 		ng-style = "{height: navHeight + 'px'}")
@@ -55,10 +54,10 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 
 
 	div(id = "goban-side", ng-cloak,
-		ng-style = "{height: countHeight() - navHeight + 'px', width : (hideSideBar && '0%') || '200px'}")
+		ng-style = "{height: countHeight() - navHeight + 'px'")
 		a(ng-href = "{{goban.path}}{{goban.title}}{{goban.myI}}",
 					target = "_blank")
-					span(id = "goban-sectionTitle") {{goban.sectionTitle}}
+					span(id = "goban-sectionTitle") {{goban.sectionTitle || '創建'}}
 		ul 
 			li(ng-repeat="j in goban.data | toIndex",
 				ng-click = "goban.setJ(j)")
@@ -81,13 +80,13 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 
 	div(id = "goban-main",
 		ng-class = "{full: hideSideBar}",
-		ng-style = "{height: countHeight() - navHeight + 'px'")
+		ng-style = "{height: countHeight() - navHeight + 'px'}")
 		div(id = "myBlank", ng-cloak,
 			class = "goban-blank")
 			a(ng-href = "{{goban.data[goban.myJ].url}}",
 				target = "_blank") 按此可開啟新頁籤
 		iframe(id = "myFrame", ng-cloak,
-				ng-class = "{loading: goban.pageLoading}"
+				ng-class = "{loading: goban.pageLoading}",
 				ng-src = "{{goban.getCurrentURL()}}")
 	div(id = "goban-keyBordCtrl")
 		div(id = "up",ng-class = "{available: false}",
@@ -105,4 +104,4 @@ body(ng-controller = "chainCtrl", ng-keydown="goban.keyDown($event)",
 
 	script(src = "bower_components/angular/angular.min.js")
 	script(src = "bower_components/goban/goban.js")
-	script(src = "javascripts/index.js")
+	script(src = "index.js")
