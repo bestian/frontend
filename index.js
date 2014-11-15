@@ -16,7 +16,8 @@
      'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png',
      'http://modernweb.com/wp-content/uploads/2014/01/6_reasons_sass_header.jpg',
      'images/angularJS.jpeg',
-     'http://www.optiinfo.com/images/services/ajax-website-development.png'];
+     'http://www.optiinfo.com/images/services/ajax-website-development.png',
+     'http://i.stack.imgur.com/4yTMs.png'];
     $scope.navHeight = 50;
     $scope.countHeight = function(){
       return $window.innerHeight - 40;
