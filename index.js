@@ -5,7 +5,7 @@
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
       title : 'bt_frontend',
-      colMax : 7
+      colMax : 10
     });
 
     $goban.myI = 1;
