@@ -18,6 +18,16 @@
      'images/angularJS.jpeg',
      'http://www.optiinfo.com/images/services/ajax-website-development.png',
      'http://i.stack.imgur.com/4yTMs.png'];
+
+
+    $scope.myOptsNew = [
+      {h:'bt_frontend', n:'前端入門'},
+      {h:'autolearn_humanfactor', n:'人因工程'},
+  //    {h:'bt_backend', n:'後端入門'},
+  //    {h:'bt_robot', n:'虛實整合入門'},
+    ];
+
+
     $scope.navHeight = 50;
     $scope.countHeight = function(){
       return $window.innerHeight - 40;
