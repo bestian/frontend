@@ -258,6 +258,9 @@
       },
       $default: function(obj){
         angular.extend(this, obj);
+        
+        this.title = $hash.asArray()[0] || '';
+        
         angular.extend(this, {
           myColumnIndex: (function(){
             var i$, to$, results$ = [];
