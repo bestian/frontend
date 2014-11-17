@@ -82,6 +82,7 @@
           dataType: "text"
         }).success(function(data){
           goban.data = goban.parseFromCSV(data);
+          goban.updateHash();
         }).error(function(){
           goban.sectionTitle = null;
           goban.data = [];

@@ -11,13 +11,16 @@
     $goban.myI = 1;
     $scope.goban.init();
     
-    $scope.icons = 
-    ['http://static.jsbin.com/images/dave.min.svg',
+    $scope.icons = {
+     'bt_frontend': ['http://static.jsbin.com/images/dave.min.svg',
      'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png',
      'http://modernweb.com/wp-content/uploads/2014/01/6_reasons_sass_header.jpg',
      'images/angularJS.jpeg',
      'http://www.optiinfo.com/images/services/ajax-website-development.png',
-     'http://i.stack.imgur.com/4yTMs.png'];
+     'http://i.stack.imgur.com/4yTMs.png'],
+
+      'autolearn_humanfactor':[]
+    } ;
 
 
     $scope.myOptsNew = [
