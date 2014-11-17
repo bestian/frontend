@@ -22,8 +22,11 @@
 
       'autolearn_humanfactor':[
       'http://upload.wikimedia.org/wikipedia/commons/b/b5/Greek_uc_psi.jpg',
-      'http://upload.wikimedia.org/wikipedia/commons/b/b5/Greek_uc_psi.jpg']
-    } ;
+      'http://upload.wikimedia.org/wikipedia/commons/b/b5/Greek_uc_psi.jpg',
+      'http://upload.wikimedia.org/wikipedia/commons/b/b5/Greek_uc_psi.jpg',
+      'http://upload.wikimedia.org/wikipedia/commons/b/b5/Greek_uc_psi.jpg',
+      'http://upload.wikimedia.org/wikipedia/commons/b/b5/Greek_uc_psi.jpg'
+      ]} ;
 
 
     $scope.myOptsNew = [
