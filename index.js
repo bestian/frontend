@@ -32,6 +32,7 @@
     $scope.myOptsNew = [
       {h:'bt_frontend', n:'前端入門'},
       {h:'autolearn_humanfactor', n:'人因工程'},
+      {h:'CPZ_frontend0', n:'赤皮仔前端第零班'},
   //    {h:'bt_backend', n:'後端入門'},
   //    {h:'bt_robot', n:'虛實整合入門'},
     ];
