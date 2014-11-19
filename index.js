@@ -33,6 +33,7 @@
       {h:'bt_frontend', n:'前端入門'},
       {h:'autolearn_humanfactor', n:'人因工程'},
       {h:'CPZ_frontend0', n:'赤皮仔前端第零班'},
+      {h:'history_information',n:'資訊的歷史'},
   //    {h:'bt_backend', n:'後端入門'},
   //    {h:'bt_robot', n:'虛實整合入門'},
     ];
