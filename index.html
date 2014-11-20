@@ -43,6 +43,14 @@
     <div id="right" ng-class="{available: ture}" ng-click="goban.dx(1)"></div>
     <div id="backup" class="backup"><a ng-click="goban.backupAll()"></a></div>
   </div>
+
+  <footer style = "position:fixed; bottom:0px; height:40px; width:100%; text-align:center">
+    {{quotes[goban.myI].n}}
+    <a ng-show = "quotes[goban.myI].f" ng-href = "{{quotes[goban.myI].h}}" target = "_blank">
+      <span ng-bind-template = "--{{quotes[goban.myI].f}}"></span>
+    </a>
+  </footer>
+  
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/goban/goban.js"></script>
   <script src="index.js"></script>

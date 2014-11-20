@@ -38,6 +38,18 @@
   //    {h:'bt_robot', n:'虛實整合入門'},
     ];
 
+    $scope.quotes = [
+        {n:'要看得更高更遠，就不能站在巨人的腳印上'},
+        {n:'程式如果不能替人分擔憂愁，那也不過是一個冰冷的空殼罷了'},
+        {n:'「如果理解這些思想，就能看穿這些技術背後的本質其實都是互通的」',
+          f:'vgod',
+          h:'http://blog.vgod.tw/2012/10/27/premature-optimization/'},
+        {n:'「過早最佳化，是萬惡之源」',
+         f:'Donald Knuth',
+         h:'http://zh.wikipedia.org/wiki/%E9%AB%98%E5%BE%B7%E7%BA%B3'}
+
+    ]
+
 
     $scope.navHeight = 50;
     $scope.countHeight = function(){
