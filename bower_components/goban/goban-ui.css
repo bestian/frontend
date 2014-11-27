@@ -13,6 +13,7 @@ a {
   padding-left: 15px;
   font-size: 24px;
   background-color: #2e2e2e;
+  overflow: auto;
 }
 /* line 24, goban-ui.scss */
 #goban-nav a {

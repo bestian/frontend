@@ -9,9 +9,10 @@
   <meta property="og:images" content="https://bestian.github.io/frontend/images/og-image.png">
   <meta property="og:description" content="以黑客棋盤匯整的前端學習資源，循續漸進，含原創教材與各方精選教材">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link href="bower_components/goban/goban-ui.css" media="screen, projection" rel="stylesheet" type="text/css">
+
   <link href="stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="stylesheets/print.css" media="print" rel="stylesheet" type="text/css">
-  <link href="bower_components/goban/goban-ui.css" media="screen, projection" rel="stylesheet" type="text/css">
 </head>
 <!--[if !IE]><!link(href="stylesheets/ie.css", media="screen, projection, rel="stylesheet", type="text/css" )
 -->
@@ -24,7 +25,7 @@
         <select ng-model="goban.title" ng-options="o.h as o.n for o in myOptsNew" ng-change="goban.load(goban.myI)"></select><span class="number">{{goban.myI}}</span><sub>-{{goban.myJ}}</sub></span>
       <sub>-{{goban.myJ}}</sub></span>
 
-      <li ng-repeat="i in goban.myColumnIndex"><a ng-class="{active: goban.myI == i}" ng-click="goban.setI(i)"><img ng-show = "icons[goban.title][i]" ng-src="{{icons[goban.title][i]}}" class="goban-nav-icon"></a></li><a href="https://github.com/bestian/goban" target="_blank"><img alt="goban" src="https://camo.githubusercontent.com/39e52c477ec7b1ec7fd55153dfa32bb2d7718fbf/687474703a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f362f36332f476f62616e5f31397831395f766964652e706e67" class="goban-logo goban-fixed-right"></a>
+      <li ng-repeat="i in goban.myColumnIndex"><a ng-class="{active: goban.myI == i}" ng-click="goban.setI(i)"><img ng-show = "icons[goban.title][i]" ng-src="{{icons[goban.title][i]}}" class="goban-nav-icon"></a></li>
     </ul>
   </nav>
   <div id="goban-side" ng-cloak ng-style="{height: countHeight() - navHeight + 'px'}"><a ng-href="{{goban.path}}{{goban.title}}{{goban.myI}}" target="_blank"><span id="goban-sectionTitle">{{goban.sectionTitle || '創建'}}</span></a>
@@ -45,7 +46,7 @@
   </div>
 
   <footer style = "position:fixed; bottom:0px; height:40px; width:100%; text-align:center">
-    {{quotes[goban.myI].n}}
+    <span ng-bind = "quotes[goban.myI].n"></span>
     <a ng-show = "quotes[goban.myI].f" ng-href = "{{quotes[goban.myI].h}}" target = "_blank">
       <span ng-bind-template = "--{{quotes[goban.myI].f}}"></span>
     </a>

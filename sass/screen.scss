@@ -15,7 +15,26 @@ html {
 	backgound-color: hsla(240%,15%,75,1);
 }
 
+
+#goban-side ul li a{
+	color: gray;
+	.arrowHead.right {
+		border-left: 4px solid gray;
+	}
+}
+
+.goban-blank {
+	color: gray;
+}
+
+
 footer {
+	a,span {
+		padding: 3px;
+		color: mix(black, cyan);
+		background-color: cyan;
+		@include border-radius(5px 5px 0px 0px);  
+	}
 	position:fixed;
 	bottom:0px;
 	left:0px;

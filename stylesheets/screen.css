@@ -77,7 +77,21 @@ html {
   backgound-color: #b6b6c9;
 }
 
-/* line 18, ../sass/screen.scss */
+/* line 19, ../sass/screen.scss */
+#goban-side ul li a {
+  color: gray;
+}
+/* line 21, ../sass/screen.scss */
+#goban-side ul li a .arrowHead.right {
+  border-left: 4px solid gray;
+}
+
+/* line 26, ../sass/screen.scss */
+.goban-blank {
+  color: gray;
+}
+
+/* line 31, ../sass/screen.scss */
 footer {
   position: fixed;
   bottom: 0px;
@@ -86,4 +100,13 @@ footer {
   height: 40px;
   text-align: center;
   z-index: 999999;
+}
+/* line 32, ../sass/screen.scss */
+footer a, footer span {
+  padding: 3px;
+  color: #007f7f;
+  background-color: cyan;
+  -moz-border-radius: 5px 5px 0px 0px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px 5px 0px 0px;
 }
