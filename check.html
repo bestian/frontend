@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html ng-app = "checkApp" ng-controller = "chkCtrl">
+
+<head>
+  <meta charset = "utf-8"/>
+  <title>網頁App檢視表</title>
+
+  <style type="text/css">
+
+    header, footer {
+      background-color: hsla(240,20%,80%,1);
+      padding: 50px;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 160%;
+    }
+
+    li {
+      padding: 10px;
+      list-style: none;
+      text-align: left;
+    }
+
+    input[type = checkbox] {
+      width: 25px;
+      background-color: blue;
+    }
+
+    .hint {
+      padding: 10px;
+      display: block;
+      width: 80%;
+      text-align: right;
+      color: gray;
+    }
+
+    .score {
+      color: gray;
+    }
+
+    .score.begin {
+      color: red;
+    }
+
+    .score.half {
+      color: orange;
+    }
+
+    .score.full {
+      color: green;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  請在旁邊另開一個分頁，檢視你的網頁App作品，自行試評。
+  
+  <ol>
+    <li>
+      <span class = "score half">
+          及格：{{qline}}
+      </span>
+      <span class = "score full">
+        滿分：{{maxline}}
+      </span>
+    </li>
+    <li>最高加總可達{{countTotalMax()}}。超過{{maxline}}分一律以{{maxline}}分計，但你可以追求卓越更好的作品對下學期的起步會有幫助
+    </li>
+    <li>
+      <span class = "score begin">
+        初評不及格，可有一週時間修訂重評
+      </span>
+    </li>
+    <li>
+      <span class = "score begin">
+        重評仍不及格，則下學期擋修
+      </span>
+    </li>
+  </ol>
+</header>
+
+<div class = "item" ng-repeat = "l in qs">
+  <div ng-init = "index = $index">
+    <h2>
+      {{catas[index]}}&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class = "score"
+            ng-class = "{
+              begin : countSubTotal(index),
+              half: countSubTotal(index) >= qline / qs.length, 
+              full: countSubTotal(index) == countSubMax(index)}">
+        ({{countSubTotal(index)}} / {{countSubMax(index)}}分)
+      </span>
+    </h1>
+    <ul>
+      <li ng-repeat = "q in l">
+        <input type = "checkbox" ng-model = "q.ok"/> {{q.n}}&nbsp;&nbsp;&nbsp;&nbsp;
+          <span class = "score" ng-class = "{full: q.ok}">
+            ({{q.ok && q.s || 0}} / {{q.s}}分)
+          </span>
+          <span class = "hint text" ng-show ="q.hint">
+            貼心小指示：{{q.hint}}
+          </span>
+
+          <span class = "hint keyword" ng-show ="q.keyword">
+            關鍵字：{{q.keyword}} <!-- TODO:GOOGLE -->
+          </span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<hr/>
+
+<footer id = "total">
+  <h1>
+    <span ng-repeat = "l in qs">
+      <span ng-init = "index = $index"
+            class="score"
+            ng-class = "{
+              begin : countSubTotal(index),
+              half: countSubTotal(index) >= qline / qs.length,
+              full: countSubTotal() < countSubMax()}">
+        {{countSubTotal(index)}}分
+        <span ng-show = "index < qs.length -1"> + </span>
+      </span>
+    </span>
+   = 
+    <span class="score"
+          ng-class = "{
+            begin : countTotal(index),
+            half:   countTotal() >= 80,
+            full: countTotal() >= 100}">{{countTotal()}}分</span>
+  </h1>
+</footer>
+
+
+<script type="text/javascript" src ="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src ="check.js"></script>
+
+</body>
+
+
+</html>
+
