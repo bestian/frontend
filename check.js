@@ -21,7 +21,7 @@ function myCHK ($scope) {
 					{n:'區塊的分隔是否明確呢?', s:8, hint:'margin和padding'},
 					{n:'控制和檢視區是否有分離呢?', s:5},
 					{n:'區塊的寬高設定是否合理呢?', s:5},
-					{n:'有無抽屜、下拉等隱藏式區塊?呢', s:2, hint:'select,CSS Psudo Class, ng-class或ng-show/ng-hide'},
+					{n:'有無使用下拉、抽屜等隱藏式區塊呢?', s:2, hint:'select,CSS Psudo Class, ng-class或ng-show/ng-hide'},
 				],
 				[  //css
 					{n:'樣式與配色與主題調和嗎?', s:10},

@@ -1,0 +1,74 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/CSS3";
+
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+	
+	body {
+		font-size: 18px;
+	}
+
+	h1,h2 {
+		margin: 16px;
+	}
+
+	h1 {
+		font-size: 36px;
+	}
+
+	h2 {
+		font-size: 28px;
+	}
+
+
+    header, footer {
+      background-color: hsla(240,30%,90%,1);
+      padding: 50px;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 160%;
+    }
+
+    ol {	
+	    li {
+	      	padding: 10px;
+	    	list-style: upper-alpha;
+	      	text-align: left;
+	    }
+    }
+
+
+    input[type = checkbox] {
+      width: 25px;
+      background-color: blue;
+      @include transform(scale(1.5));
+      @include transform-origin(0,100%);
+    }
+
+    .hint {
+    	margin-left: 32px;
+      	padding: 10px;
+      	display: block;
+      	width: 80%;
+      	color: gray;
+    }
+
+    .score {
+      color: gray;
+      &.begin {
+	      color: red;
+	    }
+	  &.half {
+	      color: orange;
+	    }
+	  &.full {
+	      color: green;
+	    }
+    }
