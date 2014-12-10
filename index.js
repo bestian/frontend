@@ -46,7 +46,10 @@
           h:'http://blog.vgod.tw/2012/10/27/premature-optimization/'},
         {n:'「過早最佳化，是萬惡之源」',
          f:'Donald Knuth',
-         h:'http://zh.wikipedia.org/wiki/%E9%AB%98%E5%BE%B7%E7%BA%B3'}
+         h:'http://zh.wikipedia.org/wiki/%E9%AB%98%E5%BE%B7%E7%BA%B3'},
+         {n:'存得起來的, 就是 storage. 看得到的, 才是 data. 看得懂的, 叫做 information. 用得出來的, 才能稱為 intelligence.',
+          f:'翟本喬',
+          h:'https://www.facebook.com/notes/ben-jai/iot-%E5%92%8C-big-data-%E5%95%86%E6%A9%9F%E7%9A%84%E8%BF%B7%E6%80%9D/10151577263144113'}
 
     ]
 
