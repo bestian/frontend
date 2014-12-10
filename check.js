@@ -40,7 +40,7 @@ function myCHK ($scope) {
 				[  //app.js
 					{n:'有用到偵測輸入的語法嗎?', s:10, hint: '如ng-model, ng-keydown,或ng-mouseover'},
 					{n:'有將資料綁定到內文嗎?', s:8, hint: '如ng-repeat, ng-bind, ng-bind-template或{{    }}'},
-					{n:'有將變數或資料綁定到樣式呢?', s:5, hint: 'ng-class或ng-style'},
+					{n:'有將變數或資料綁定到樣式嗎?', s:5, hint: 'ng-class或ng-style'},
 					{n:'有更新成angular1.3的寫法嗎?', s:5, keyword:'angular 1.3'},
 					{n:'有用到ng-src來設定元素嗎?', s:2},
 				],
