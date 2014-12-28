@@ -4,7 +4,8 @@
   chainCtrl = function($scope, $window, $goban){
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
-      title : 'bt_frontend',
+      title : 'CPZ_frontend0',
+      myI: 1,
       colMax : 10
     });
 
@@ -12,6 +13,10 @@
     $scope.goban.init();
     
     $scope.icons = {
+     'CPZ_frontend0': [
+     	'http://static.jsbin.com/images/dave.min.svg',
+     	'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png',
+     ],	
      'bt_frontend': [
      'http://static.jsbin.com/images/dave.min.svg',
      'https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png',
