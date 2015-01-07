@@ -6,7 +6,7 @@
       path : 'https://ethercalc.org/',
       title : 'CPZ_frontend0',
       myI: 1,
-      colMax : 10
+      colMax : 5
     });
 
   //  $goban.myI = 1;
