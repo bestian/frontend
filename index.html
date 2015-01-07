@@ -37,6 +37,7 @@
     <div id="myBlank" ng-cloak class="goban-blank"><a ng-href="{{goban.data[goban.myJ].url}}" target="_blank">按此可開啟新頁籤</a></div>
     <iframe id="myFrame" ng-cloak ng-class="{loading: goban.pageLoading}" ng-src="{{goban.getCurrentURL()}}"></iframe>
   </div>
+  <!--
   <div id="goban-keyBordCtrl">
     <div id="up" ng-class="{available: false}" ng-click="goban.dy(-1)"></div>
     <div id="down" ng-class="{available: false}" ng-click="goban.dy(1)"></div>
@@ -50,7 +51,12 @@
     <a ng-show = "quotes[goban.myI].f" ng-href = "{{quotes[goban.myI].h}}" target = "_blank">
       <span ng-bind-template = "--{{quotes[goban.myI].f}}"></span>
     </a>
+
   </footer>
+-->
+
+    <!-- TODO: add an IRC -->
+    <!-- https://kiwiirc.com/client/irc.kiwiirc.com/#goban.tw -->
   
   <script src="bower_components/angular/angular.min.js"></script>
   <script src="bower_components/goban/goban.js"></script>
