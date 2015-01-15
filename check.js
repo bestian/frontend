@@ -25,9 +25,9 @@ function myCHK ($scope) {
 				],
 				[  //css
 					{n:'樣式與配色與主題調和嗎?', s:10},
-					{n:'是否有用SASS做跨瀏覽器與程式碼簡化呢?', s:8},
+					{n:'是否有用SASS或CSS做跨瀏覽器與程式碼簡化呢?', s:8},
 					{n:'有做感應試設計讓手機直放也能看清楚嗎?', s:5, keyword:'CSS Media Query',hint:'@media screen and (max-width : 600px)或ng-class'},
-					{n:'是否有用SASS做特效呢?', s:5, hint:'compass/css3, @include transistion, @include animation, @include keyframes'},
+					{n:'是否有用SASS或CSS做特效呢?', s:5, hint:'compass/css3, @include transistion, @include animation, @include keyframes'},
 					{n:'有做responsive,讓列表機列印時也能友善嗎?', s:2, keyword:'CSS Media Query', hint:'@media print'}
 				],  
 				[  //data.js
