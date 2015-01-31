@@ -5,7 +5,7 @@
     $scope.goban = $goban.$default({
       path : 'https://ethercalc.org/',
       title : 'CPZ_frontend0',
-      myI: 1,
+      myI: 2,
       colMax : 5
     });
 
